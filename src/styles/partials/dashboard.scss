@@ -1,0 +1,17 @@
+/**
+ * Dashboard
+ */
+.dashboard-count {
+  font-size: 35px;
+  text-align: center;
+}
+
+#summary-boxes-container {
+  .dropdown-menu {
+    width: 100%;
+
+    li {
+      width: 100%;
+    }
+  }
+}
