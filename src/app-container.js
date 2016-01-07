@@ -48,12 +48,12 @@ MortarJS.Utils.AuthenticationApi = require('./utils/AuthenticationApi');
 MortarJS.require = function (type) {
 	var required = {};
 	var exportType = type.toLowerCase().charAt(0).toUpperCase() + type.slice(1);
-	var flattened = MortarJS.Flatten(exports[exportType], '', {});
+	var flattened = MortarJS.Flatten(MortarJS[exportType], '', {});
 
 	for (var key in arguments) {
 		var argument = arguments[key];
 		if (flattened.hasOwnProperty(argument)) {
-			required[argument] = _.get(exports[exportType], flattened[argument]);
+			required[argument] = _.get(MortarJS[exportType], flattened[argument]);
 		}
 	}
 

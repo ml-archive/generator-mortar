@@ -1,5 +1,5 @@
 var React = require('react/addons');
-var MortarJS = require('../../bootstrap').MortarJS;
+var MortarJS = require('../../app-container').MortarJS;
 var Column = MortarJS.Components.PageStructure.Column;
 var Row = MortarJS.Components.PageStructure.Row;
 

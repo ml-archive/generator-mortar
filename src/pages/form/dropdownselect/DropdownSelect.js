@@ -2,7 +2,7 @@
 var React                  = require('react/addons');
 var Router                 = require('react-router');
 var assign                 = require('react/lib/Object.assign');
-var MortarJS               = require('../../../bootstrap').MortarJS;
+var MortarJS               = require('../../../app-container').MortarJS;
 
 // Fuzz Components
 var Fz                     = MortarJS.require('components', 'Row', 'Column', 'Form', 'Table', 'PaginatedButtons', 'PerPageSelector');
