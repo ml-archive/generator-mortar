@@ -21,8 +21,14 @@ var Logout        = MortarJS.Components.Authentication.Login.Logout;
  *
  * @type {exports}
  */
-var Sessions             = require('./pages/sessions/Sessions'),
-	EditSession          = require('./pages/sessions/components/EditSession');
+var Dashboard             = require('./pages/dashboard/Dashboard');
+
+// Form Components
+var DropdownSelect = require('./pages/components/form/DropdownSelect/DropdownSelect');
+var Input = require('./pages/components/form/Input/Input');
+
+// Visualization Components
+var Table = require('./pages/components/visualization/table/Table');
 
 /**
  * Routing
@@ -38,14 +44,13 @@ var Routes = (
 		<Route name="login"                                                        handler={Login} />
 		<Route name="logout"                                                       handler={Logout} />
 		<Route name="password-reset"                                               handler={Login} />
-		<Route name="index"                                                        handler={Sessions} />
+		<Route name="index"                                                        handler={Dashboard} />
 
-		<Route name="sessions"              path="/sessions"                       handler={Sessions} />
-		<Route name="new-session"           path="/sessions/new"                   handler={EditSession} />
-		<Route name="new-session-challenge" path="/sessions/new/challenge/:chal"   handler={EditSession} />
-		<Route name="edit-session"          path="/sessions/edit/:id"              handler={EditSession} />
+		<Route name="table" path="/components/table" handler={Table} />
+		<Route name="dropdown" path="/components/dropdown" handler={DropdownSelect} />
+		<Route name="input" path="/components/input" handler={Input} />
 
-		<NotFoundRoute handler={Sessions} />
+		<NotFoundRoute handler={Dashboard} />
 	</Route>
 );
 

@@ -38,7 +38,7 @@ var CmsUserStore = assign({}, ModelStore, {
 		var tokenStore = this._getLocalTokenStore();
 
 		if (tokenStore === null) {
-			return true;
+			return false;
 		}
 
 		// Buffer time in seconds

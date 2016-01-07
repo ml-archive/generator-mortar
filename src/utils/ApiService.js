@@ -7,7 +7,7 @@ var SuccessHandler = MortarJS.Utils.SuccessHandler;
 var PaginationActionCreators = MortarJS.Actions.PaginationActionCreators;
 var CmsActions = MortarJS.Actions.GeneralCmsActionCreators;
 var QueryHelper = MortarJS.Utils.QueryHelper;
-var CmsUserStore = MortarJS.Stores.CmsUserStore;
+var CmsUserStore = require('../stores/CmsUserStore');
 
 var ApiService = {
 	/**

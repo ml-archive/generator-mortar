@@ -19,8 +19,34 @@ module.exports = {
 
 	navbar: [
 		{
-			"buttonName": "Sessions",
-			"href":       "#/sessions"
+			"buttonName": "Dashboard",
+			"href": "/#/"
+		},
+
+		{
+			"buttonName": "Form Components",
+			"href": "",
+			"children": [
+				{
+					"buttonName": "Input",
+					"href":       "#/components/input"
+				},
+				{
+					"buttonName": "DropdownSelect",
+					"href":       "#/components/dropdown"
+				},
+			]
+		},
+
+		{
+			"buttonName": "Visualization Components",
+			"href": "",
+			"children": [
+				{
+					"buttonName": "Table",
+					"href":       "#/components/table"
+				},
+			]
 		}
 	]
 };
