@@ -23,13 +23,6 @@ var Logout        = MortarJS.Components.Authentication.Login.Logout;
  */
 var Dashboard             = require('./pages/dashboard/Dashboard');
 
-// Form Components
-var DropdownSelect = require('./pages/components/form/DropdownSelect/DropdownSelect');
-var Input = require('./pages/components/form/Input/Input');
-
-// Visualization Components
-var Table = require('./pages/components/visualization/table/Table');
-
 /**
  * Routing
  *
@@ -45,10 +38,6 @@ var Routes = (
 		<Route name="logout"                                                       handler={Logout} />
 		<Route name="password-reset"                                               handler={Login} />
 		<Route name="index"                                                        handler={Dashboard} />
-
-		<Route name="table" path="/components/table" handler={Table} />
-		<Route name="dropdown" path="/components/dropdown" handler={DropdownSelect} />
-		<Route name="input" path="/components/input" handler={Input} />
 
 		<NotFoundRoute handler={Dashboard} />
 	</Route>
