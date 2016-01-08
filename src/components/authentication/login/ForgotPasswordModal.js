@@ -2,7 +2,7 @@ var React = require('react/addons');
 var MortarJS = require('../../../bootstrap').MortarJS;
 var Form = MortarJS.Components.ResourceBinding.Form.Form;
 var Modal = MortarJS.Components.Global.Modal;
-var CmsUserStore = MortarJS.Stores.CmsUserStore;
+var CmsUserStore = require('../../../stores/CmsUserStore');
 var AuthenticationActionCreators = MortarJS.Actions.AuthenticationServerActionCreators;
 var FormStore = MortarJS.Stores.FormStore;
 
@@ -135,4 +135,3 @@ var ForgotPasswordModal = React.createClass({
 });
 
 module.exports = ForgotPasswordModal;
-

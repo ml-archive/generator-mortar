@@ -32,7 +32,7 @@ if (CmsUserStore.isTokenExpired()) {
 }
 
 // Attach react router
-window.__app_container = document.getElementById('canvas-wrapper');
+window.__app_container = document.getElementById('root');
 Router.run(Routes, function (Handler) {
 	React.render(<Handler/>, window.__app_container);
 });

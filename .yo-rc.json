@@ -1,7 +1,0 @@
-{
-  "generator-react-webpack": {
-    "app-name": "Fuzz Admin UI",
-    "architecture": false,
-    "styles-language": "sass"
-  }
-}

@@ -27,10 +27,14 @@ Desktop.ini
 $RECYCLE.BIN/
 
 # App specific
-
 node_modules/
+npm-debug.log
 .tmp
 dist
 src/config/base-config.js
 tags
 *-old/
+
+# Webpack compiled & packed javascript
+build.js
+build/.*

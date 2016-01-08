@@ -6,6 +6,8 @@
  */
 'use strict';
 var webpack = require('webpack');
+// path module used to resolve absolute paths
+var path = require('path');
 
 module.exports = {
 
@@ -17,10 +19,7 @@ module.exports = {
 	cache:   true,
 	debug:   true,
 	devtool: false,
-	entry:   [
-		'webpack/hot/only-dev-server',
-		'./src/main.js'
-	],
+	entry:   './src/main.js',
 
 	stats: {
 		colors:  true,
@@ -40,31 +39,45 @@ module.exports = {
 			test:    /\.js$/,
 			loader:  'jsxhint'
 		}],
-		loaders:    [{
-			test:    /\.js$/,
-			exclude: /node_modules/,
-			loader:  'react-hot!babel-loader'
-		}, {
-			test:   /\.scss$/,
-			loader: "style!css!sass"
-		}, {
-			test:   /\.css$/,
-			loader: 'style-loader!css-loader'
-		}, {
-			test:   /\.(png|jpg|woff|woff2)$/,
-			loader: 'url-loader?limit=8192'
-		}, {
-			test:   /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-			loader: "url-loader?limit=10000&minetype=application/font-woff"
-		}, {
-			test:   /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-			loader: "url-loader?limit=8192"
-		}]
-	},
-
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoErrorsPlugin()
-	]
+		loaders:    [
+			// compile all javascript files using the babel-loader module
+			{
+				test:    /\.js$/,
+				exclude: /node_modules/,
+				loader:  'babel-loader',
+				query: {
+          presets: ['es2015','react']
+					// cacheDirectory: true
+        }
+			},
+			// compile sass files using the sass-loader module
+      // stored in the compiled javascript file
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass']
+      },
+      // compile css files using the css-loader module
+      // stored in the compiled javascript file
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css', 'autoprefixer']
+      },
+			// compile local images
+      // hash file names to prevent cacheing
+      // copy into 'img' sub-directory
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader?name=img/img-[hash:6].[ext]'
+      },
+			{
+				test:   /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+				loader: "url-loader?limit=10000&minetype=application/font-woff"
+			},
+			{
+				test:   /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+				loader: "url-loader?limit=8192"
+			}
+		]
+	}
 
 };

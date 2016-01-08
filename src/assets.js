@@ -8,9 +8,9 @@
  * @type {exports}|string
  */
 require('bootstrap/dist/css/bootstrap.min.css');
-// require('styles/css/material.css');
-// require('styles/main.scss');
-require('style!css!bootstrap/dist/css/bootstrap.min.css');
+require('styles/css/material.css');
+require('styles/main.scss');
+
 require('normalize.css');
 
 /**
@@ -24,7 +24,9 @@ require('mortarjs/lib/styles/main.scss');
 require('mortarjs/lib/styles/spinners.scss');
 
 /**
- * Scripts
- * @type string
+ * Javascript
+ * @type {exports}|string
  */
+var $ = require('jquery');
+//require('imports!metismenu/dist/metisMenu.js');
 //require('imports!./menu.js');
