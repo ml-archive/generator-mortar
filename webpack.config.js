@@ -34,6 +34,7 @@ module.exports = {
 			'components': __dirname + '/src/components/'
 		}
 	},
+
 	module:  {
 		preLoaders: [{
 			test:    /\.js$/,
@@ -46,8 +47,8 @@ module.exports = {
 				exclude: /node_modules/,
 				loader:  'babel-loader',
 				query: {
-          presets: ['es2015','react']
-					// cacheDirectory: true
+          presets: ['es2015','react'],
+					cacheDirectory: true
         }
 			},
 			// compile sass files using the sass-loader module
