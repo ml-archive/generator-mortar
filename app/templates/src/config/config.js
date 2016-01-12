@@ -24,28 +24,13 @@ module.exports = {
 		},
 
 		{
-			"buttonName": "Form Components",
+			"buttonName": "Additional Page",
 			"href": "",
 			"children": [
 				{
-					"buttonName": "Input",
-					"href":       "#/components/input"
-				},
-				{
-					"buttonName": "DropdownSelect",
-					"href":       "#/components/dropdown"
-				},
-			]
-		},
-
-		{
-			"buttonName": "Visualization Components",
-			"href": "",
-			"children": [
-				{
-					"buttonName": "Table",
-					"href":       "#/components/table"
-				},
+					"buttonName": "Page",
+					"href":       "#/page/"
+				}
 			]
 		}
 	]
