@@ -8,7 +8,7 @@
  * @type {exports}|string
  */
 require('bootstrap/dist/css/bootstrap.min.css');
-require('styles/css/material.css');
+// require('styles/css/material.css');
 require('styles/main.scss');
 
 require('normalize.css');

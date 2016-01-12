@@ -190,12 +190,12 @@ module.exports = yeoman.generators.Base.extend({
 
       // Copy files to /src/components/authentication directory
       this.fs.copy(
-        this.templatePath('src/actions/authentication/RequireAuthentication.js'),
-        this.destinationPath('src/a/authentication/RequireAuthentication.js')
+        this.templatePath('src/components/authentication/RequireAuthentication.js'),
+        this.destinationPath('src/components/authentication/RequireAuthentication.js')
       );
       this.fs.copy(
-        this.templatePath('src/components/authentication/ResourceActionCreators.js'),
-        this.destinationPath('src/components/authentication/ResourceActionCreators.js')
+        this.templatePath('src/components/authentication/RequirePermissions.js'),
+        this.destinationPath('src/components/authentication/RequirePermissions.js')
       );
 
       // Copy files to /src/components/authentication/login directory
@@ -292,8 +292,8 @@ module.exports = yeoman.generators.Base.extend({
 
       // Copy files to /src/components/visualization/header/exports directory
       this.fs.copy(
-        this.templatePath('src/components/visualization/header/exports/Exporter.js'),
-        this.destinationPath('src/components/visualization/header/exports/Exporter.js')
+        this.templatePath('src/components/visualization/exports/Exporter.js'),
+        this.destinationPath('src/components/visualization/exports/Exporter.js')
       );
 
       // Copy files to /src/config directory
@@ -302,7 +302,7 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('src/config/base-config.example.js')
       );
       this.fs.copyTpl(
-        this.templatePath('src/config/base-config.js'),
+        this.templatePath('src/config/base-config.example.js'),
         this.destinationPath('src/config/base-config.js'), {
           projectName: this.props.projectName
         }
