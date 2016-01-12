@@ -1,16 +1,34 @@
 {
   "name": "generator-mortar",
   "preferGlobal": true,
-  "version": "0.0.0",
-  "description": "yeoman generator for mortar.js projects",
-  "homepage": "https://gitlab.fuzzhq.com/web-tools/mortar-generator",
+  "version": "0.1.0",
+  "description": "A Yeoman Generator for Mortar JS projects",
+  "homepage": "https://github.com/fuzz-productions/generator-mortar",
   "author": {
     "name": "Fuzz Productions",
     "email": "it@fuzzproductions.com",
     "url": "https://fuzzproductions.com/"
   },
+  "contributors": [
+    {
+      "name": "Kyle Mendes",
+      "email": "kmendes@fuzzproductions.com"
+    },
+    {
+      "name": "Simon Yousoufov",
+      "email": "syousoufov@fuzzproductions.com"
+    },
+    {
+      "name": "Lea Yousoufov",
+      "email": "lyousoufov@fuzzproductions.com"
+    },
+    {
+      "name": "Walter Beller-Morales",
+      "email": "wbellermorales@fuzzproductions.com"
+    }
+  ],
   "license": "MIT",
-  "repository": "git@gitlab.fuzzhq.com:web-tools/mortar-generator.git",
+  "repository": "git@github.com:fuzz-productions/generator-mortar.git",
   "files": [
     "app"
   ],
