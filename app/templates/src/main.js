@@ -4,12 +4,13 @@
  * Packages
  * @type {exports}
  */
-var React = require('react/addons');
-var config = require('./config/config');
-var Router  = require('react-router');
+var React        = require('react/addons');
+var config       = require('./config/config');
+var Router       = require('react-router');
 var CmsUserStore = require('./stores/CmsUserStore');
-var MortarJS = require('./bootstrap').MortarJS;
+var MortarJS     = require('./bootstrap').MortarJS;
 var AppContainer = require('./app-container').MortarJS;
+
 var AuthenticationServerActionCreators = AppContainer.Actions.AuthenticationServerActionCreators;
 
 /**
