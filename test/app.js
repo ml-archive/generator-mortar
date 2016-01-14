@@ -17,13 +17,13 @@ describe('generator-mortar:app', function () {
     assert.file([
       'src/',
       'src/actions',
+      'src/components',
       'src/config/',
       'src/constants',
-      'src/images',
       'src/pages',
       'src/stores',
       'src/styles',
-      'src/utilities'
+      'src/utils'
     ]);
   });
 
@@ -44,29 +44,43 @@ describe('generator-mortar:app', function () {
   it('uses the correct webpack.config.js content', function () {
     assert.fileContent(
       'webpack.config.js',
-      fs.readFileSync(path.join(__dirname, '../app/templates/_webpack.config.js')).toString()
+      fs.readFileSync(path.join(__dirname, '../app/templates/webpack.config.js')).toString()
     );
   });
 
   it('uses the correct gitignore content', function () {
     assert.fileContent(
       '.gitignore',
-      fs.readFileSync(path.join(__dirname, '../app/templates/_.gitignore')).toString()
+      fs.readFileSync(path.join(__dirname, '../app/templates/.gitignore')).toString()
     );
   });
 
   it('creates src files', function () {
     assert.file([
+      'src/app-container.js',
       'src/assets.js',
       'src/bootstrap.js',
-      'src/index.js',
+      'src/main.js',
+      'src/menu.js',
       'src/routes.js'
+    ]);
+  });
+
+  it('creates components files', function () {
+    assert.file([
+      'src/components/authentication/RequireAuthentication.js',
+      'src/components/authentication/RequirePermissions.js',
+      'src/components/authentication/login/SignOutHeaderLink.js',
+      'src/components/authentication/login/SignOutConfirmationModal.js',
+      'src/components/authentication/login/PasswordResetModal.js',
+      'src/components/authentication/login/Logout.js',
+      'src/components/authentication/login/Login.js',
+      'src/components/authentication/login/ForgotPasswordModal.js'
     ]);
   });
 
   it('creates config files', function () {
     assert.file([
-      'src/config/base-config.js',
       'src/config/base-config.example.js',
       'src/config/config.js',
     ]);
@@ -75,28 +89,28 @@ describe('generator-mortar:app', function () {
   it('uses the correct assets.js content', function () {
     assert.fileContent(
       'src/assets.js',
-      fs.readFileSync(path.join(__dirname, '../app/templates/_src/_assets.js')).toString()
+      fs.readFileSync(path.join(__dirname, '../app/templates/src/assets.js')).toString()
     );
   });
 
   it('uses the correct bootstrap.js content', function () {
     assert.fileContent(
       'src/bootstrap.js',
-      fs.readFileSync(path.join(__dirname, '../app/templates/_src/_bootstrap.js')).toString()
+      fs.readFileSync(path.join(__dirname, '../app/templates/src/bootstrap.js')).toString()
     );
   });
 
-  it('uses the correct index.js content', function () {
+  it('uses the correct main.js content', function () {
     assert.fileContent(
-      'src/index.js',
-      fs.readFileSync(path.join(__dirname, '../app/templates/_src/_index.js')).toString()
+      'src/main.js',
+      fs.readFileSync(path.join(__dirname, '../app/templates/src/main.js')).toString()
     );
   });
 
   it('uses the correct routes.js content', function () {
     assert.fileContent(
       'src/routes.js',
-      fs.readFileSync(path.join(__dirname, '../app/templates/_src/_routes.js')).toString()
+      fs.readFileSync(path.join(__dirname, '../app/templates/src/routes.js')).toString()
     );
   });
 
@@ -106,9 +120,30 @@ describe('generator-mortar:app', function () {
     ]);
   });
 
+  it('creates pages files', function () {
+    assert.file([
+      'src/pages/dashboard/Dashboard.js'
+    ]);
+  });
+
+  it('creates stores files', function () {
+    assert.file([
+      'src/stores/CmsUserStore.js'
+    ]);
+  });
+
   it('creates stylesheet files', function () {
     assert.file([
       'src/styles/main.scss'
+    ]);
+  });
+
+  it('creates utils files', function () {
+    assert.file([
+      'src/utils/string.js',
+      'src/utils/ResourceApi.js',
+      'src/utils/AuthenticationApi.js',
+      'src/utils/ApiService.js'
     ]);
   });
 
