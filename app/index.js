@@ -371,6 +371,28 @@ module.exports = yeoman.generators.Base.extend({
 				this.destinationPath('src/styles/css/material.min.css')
 			);
 
+			// Copy files to /src/styles/fonts directory
+			this.fs.copy(
+				this.templatePath('src/styles/fonts/LICENSE.txt'),
+				this.destinationPath('src/styles/fonts/LICENSE.txt')
+			);
+			this.fs.copy(
+				this.templatePath('src/styles/fonts/Material-Design-Icons.eot'),
+				this.destinationPath('src/styles/fonts/Material-Design-Icons.eot')
+			);
+			this.fs.copy(
+				this.templatePath('src/styles/fonts/Material-Design-Icons.svg'),
+				this.destinationPath('src/styles/fonts/Material-Design-Icons.svg')
+			);
+			this.fs.copy(
+				this.templatePath('src/styles/fonts/Material-Design-Icons.ttf'),
+				this.destinationPath('src/styles/fonts/Material-Design-Icons.ttf')
+			);
+			this.fs.copy(
+				this.templatePath('src/styles/fonts/Material-Design-Icons.woff'),
+				this.destinationPath('src/styles/fonts/Material-Design-Icons.woff')
+			);
+
 			// Copy files to /src/utils directory
 			this.fs.copy(
 				this.templatePath('src/utils/ApiService.js'),
