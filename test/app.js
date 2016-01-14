@@ -51,7 +51,7 @@ describe('generator-mortar:app', function () {
   it('uses the correct gitignore content', function () {
     assert.fileContent(
       '.gitignore',
-      fs.readFileSync(path.join(__dirname, '../app/templates/.gitignore')).toString()
+      fs.readFileSync(path.join(__dirname, '../app/templates/gitignore')).toString()
     );
   });
 

@@ -69,7 +69,7 @@ module.exports = yeoman.generators.Base.extend({
 			this.fs.copy( this.templatePath('webpack.config.js'), this.destinationPath('webpack.config.js') );
 
 			// Copy .gitignore
-			this.fs.copy( this.templatePath('.gitignore'), this.destinationPath('.gitignore') );
+			this.fs.copy( this.templatePath('gitignore'), this.destinationPath('.gitignore') );
 
 			// Copy .jshintrc
 			this.fs.copy( this.templatePath('.jshintrc'), this.destinationPath('.jshintrc') );
