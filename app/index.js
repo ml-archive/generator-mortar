@@ -367,10 +367,6 @@ module.exports = yeoman.generators.Base.extend({
 
 			// Copy files to /src/styles/css directory
 			this.fs.copy(
-				this.templatePath('src/styles/css/material.css'),
-				this.destinationPath('src/styles/css/material.css')
-			);
-			this.fs.copy(
 				this.templatePath('src/styles/css/material.min.css'),
 				this.destinationPath('src/styles/css/material.min.css')
 			);
