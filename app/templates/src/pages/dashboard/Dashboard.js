@@ -1,7 +1,6 @@
 var React = require('react/addons');
 var MortarJS = require('../../app-container').MortarJS;
-var Column = MortarJS.Components.PageStructure.Column;
-var Row = MortarJS.Components.PageStructure.Row;
+var Br = MortarJS.require('components', 'Row', 'Column', 'Form', 'Table');
 
 /**
  * The Instructors list page view component
