@@ -1,7 +1,7 @@
 # Yeoman Generator for Mortar.js Projects
 
 <p align="center">
-  <img src="https://raw.github.com/fuzz-productions/generator-mortar/logo.svg" />
+  <img src="https://cdn.rawgit.com/fuzz-productions/generator-mortar/master/logo.svg" />
 </p>
 
 
