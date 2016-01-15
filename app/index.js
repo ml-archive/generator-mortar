@@ -176,6 +176,15 @@ module.exports = yeoman.generators.Base.extend({
 					projectAuthor      : this.props.projectAuthor
 				}
 			);
+			// Copy build-index.html
+			this.fs.copyTpl(
+				this.templatePath('build-index.html'),
+				this.destinationPath('build-index.html'), {
+					projectName        : this.props.projectName,
+					projectDescription : this.props.projectDescription,
+					projectAuthor      : this.props.projectAuthor
+				}
+			);
 
 			// Copy files to /src directory
 			this.fs.copy(

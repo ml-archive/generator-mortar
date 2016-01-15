@@ -27,9 +27,10 @@ describe('generator-mortar:app', function () {
     ]);
   });
 
-  it('creates index.html', function () {
+  it('creates index.html and the build-index.html', function () {
     assert.file([
-      'index.html'
+      'index.html',
+      'build-index.html'
     ]);
   });
 
