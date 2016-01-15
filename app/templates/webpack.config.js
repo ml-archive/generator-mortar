@@ -5,16 +5,18 @@
  * the subfolder /webpack-dev-server/ is visited. Visiting the root will not automatically reload.
  */
 'use strict';
-var webpack = require('webpack');
+const webpack = require('webpack');
 // path module used to resolve absolute paths
-var path = require('path');
+const path = require('path');
+// cleans the bundled directory between builds
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
 
 	output: {
-		path: path.join(__dirname, '/assets/'),
+		path: path.join(__dirname, '/build/'),
 		filename:   'main.js',
-		publicPath: '/assets/'
+		publicPath: '/build/'
 	},
 
 	cache:   true,
@@ -72,6 +74,11 @@ module.exports = {
         loader: 'file-loader?name=img/img-[hash:6].[ext]'
       },
 			{
+		  	test: /\.ico$/,
+		   	exclude: /node_modules/,
+		   	loader:'file-loader?name=[name].[ext]'
+		 	},
+			{
 				test:   /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
 				loader: "url-loader?limit=10000&minetype=application/font-woff"
 			},
@@ -80,6 +87,12 @@ module.exports = {
 				loader: "url-loader?limit=8192"
 			}
 		]
-	}
+	},
+	plugins: [
+		new CleanWebpackPlugin(['build'], {
+			root: __dirname,
+			verbose: true
+		})
+  ]
 
 };
