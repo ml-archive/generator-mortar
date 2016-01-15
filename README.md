@@ -1,7 +1,12 @@
 # Yeoman Generator for Mortar.js Projects
 
+[Mortar.js](http://mortarjs.io/) is an opensource framework built with React that makes interacting and updating data quick, easy, and powerful. It can best be described as an Admin User Interface that allows developers to quickly and safely build sites to interface with an API without accessing the database directly.
+
+This generator makes it extreamly easy to begin a React & Mortar project by taking care of the directory structure, installing dependecies, and the build process. The end result will allow you to build using React, JSX, ES6, and — of course — Mortar.
+
+
 ## Prerequisites
-  - `npm install -g yo gulp`
+  - Yeoman and Gulp through `npm install -g yo gulp`
 
 ## Installation
   1. Run `npm install -g generator-mortar` to install the generator.
@@ -19,7 +24,7 @@
 ## Mortar Project Directory Structure
 The end result of this yeoman generator will produce the following project structure:
 
-- `node_modules` Installed third party packages including [Mortar.js](https://mortarjs.io).
+- `node_modules` Installed third party packages including [Mortar.js](http://mortarjs.io/).
 - `src`
   - `actions`
   - `components`
