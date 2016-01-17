@@ -11,19 +11,22 @@ const path = require('path');
 // cleans the bundled directory between builds
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const PATHS = {
+	app: path.join(__dirname, 'src'),
+  main: path.join(__dirname, 'src/main.js'),
+  output: path.join(__dirname, 'build')
+};
+
 module.exports = {
 
+	context: PATHS.app,
+	entry: PATHS.main,
 	output: {
-		path: path.join(__dirname, '/build/'),
+		path: PATHS.output,
 		filename:   'main.js',
-		publicPath: '/build/'
 	},
 
 	cache:   true,
-	debug:   true,
-	devtool: false,
-	entry:   './src/main.js',
-
 	stats: {
 		colors:  true,
 		reasons: true
@@ -54,6 +57,15 @@ module.exports = {
 					cacheDirectory: true
         }
 			},
+			// add HTML assets to the build folder
+			// used to ensure index.html is carried through the build 
+			{
+				test: /\.html$/,
+				loader: 'file',
+				query: {
+					name:'[name].[ext]'
+				}
+			},
 			// compile sass files using the sass-loader module
       // stored in the compiled javascript file
       {
@@ -68,23 +80,39 @@ module.exports = {
       },
 			// compile local images
       // hash file names to prevent cacheing
-      // copy into 'img' sub-directory
+      // copy into 'assets/img' sub-directory
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader?name=img/img-[hash:6].[ext]'
+				exclude: /node_modules/,
+        loader: 'file',
+				query: {
+					name: 'assets/img/img-[hash:6].[ext]'
+				}
       },
 			{
 		  	test: /\.ico$/,
 		   	exclude: /node_modules/,
-		   	loader:'file-loader?name=[name].[ext]'
+		   	loader:'file',
+				query: {
+					name: '[name].[ext]'
+				}
 		 	},
 			{
 				test:   /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-				loader: "url-loader?limit=10000&minetype=application/font-woff"
+				loader: 'url',
+				query: {
+					limit: 10000,
+					minetype: 'application/font-woff',
+					name: 'assets/fonts/[name].[ext]'
+				}
 			},
 			{
 				test:   /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-				loader: "url-loader?limit=8192"
+				loader: 'url',
+				query: {
+					limit: 8192,
+					name: 'assets/fonts/[name].[ext]'
+				}
 			}
 		]
 	},

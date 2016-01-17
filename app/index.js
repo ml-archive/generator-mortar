@@ -141,6 +141,14 @@ module.exports = yeoman.generators.Base.extend({
 				if (err) console.error(err);
 			});
 
+			mkdirp('src/public', function (err) {
+				if (err) console.error(err);
+			});
+
+			mkdirp('src/public/images', function (err) {
+				if (err) console.error(err);
+			});
+
 			mkdirp('src/stores', function (err) {
 				if (err) console.error(err);
 			});

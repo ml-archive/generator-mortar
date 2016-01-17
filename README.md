@@ -44,6 +44,8 @@ The end result of this yeoman generator will produce the following project struc
   - `constants`
   - `pages`
   -   `dashboard`
+  - `public`
+    - `images`
   - `stores`
   - `styles`
     - `css`
@@ -54,10 +56,10 @@ The end result of this yeoman generator will produce the following project struc
   - `assets.js`
   - `bootstrap.js`
   - `main.js` **Required entry point for Webpack**
+  - `index.html`
   - `routes.js`
 - `.gitignore` Git ignore rules for Mortar.js projects.
 - `.jshintrc` Custom javascript hinting rules applied using JSHint.
-- `index.html` **Required entry point for web applications**
 - `package.json` List of `npm` dependencies and commands to build / compile your application.
 - `README.md`
 - `webpack.config.js` Webpack bundler process to build and unify all javascript, css, sass, image, and font dependencies.

@@ -39,9 +39,23 @@ Router.run(Routes, function (Handler) {
 });
 
 /**
+ * IMPORTANT! Pull index.html into the build folder.
+ *
+ * @type {exports}
+ */
+require('./index.html');
+
+/**
  * Pull in css/scss/js file assets
  *
  * @type {exports}
  */
 require('./assets');
 require('./utils/string.js');
+
+/**
+ * Pull in image assets
+ *
+ * @type {exports}
+ */
+// require('./public/favicon.ico');
