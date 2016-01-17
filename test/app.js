@@ -27,13 +27,6 @@ describe('generator-mortar:app', function () {
     ]);
   });
 
-  it('creates index.html and the build-index.html', function () {
-    assert.file([
-      'index.html',
-      'build-index.html'
-    ]);
-  });
-
   it('creates npm, webpack, and git files', function () {
     assert.file([
       'package.json',
@@ -54,6 +47,12 @@ describe('generator-mortar:app', function () {
       '.gitignore',
       fs.readFileSync(path.join(__dirname, '../app/templates/gitignore')).toString()
     );
+  });
+
+  it('creates index.html', function () {
+    assert.file([
+      'src/index.html',
+    ]);
   });
 
   it('creates src files', function () {

@@ -177,17 +177,8 @@ module.exports = yeoman.generators.Base.extend({
 		copyMainFiles: function () {
 			// Copy index.html
 			this.fs.copyTpl(
-				this.templatePath('index.html'),
-				this.destinationPath('index.html'), {
-					projectName        : this.props.projectName,
-					projectDescription : this.props.projectDescription,
-					projectAuthor      : this.props.projectAuthor
-				}
-			);
-			// Copy build-index.html
-			this.fs.copyTpl(
-				this.templatePath('build-index.html'),
-				this.destinationPath('build-index.html'), {
+				this.templatePath('src/index.html'),
+				this.destinationPath('src/index.html'), {
 					projectName        : this.props.projectName,
 					projectDescription : this.props.projectDescription,
 					projectAuthor      : this.props.projectAuthor

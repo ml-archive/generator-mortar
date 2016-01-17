@@ -53,12 +53,12 @@ module.exports = {
 				exclude: /node_modules/,
 				loader:  'babel-loader',
 				query: {
-          presets: ['es2015','react'],
+					presets: ['es2015','react'],
 					cacheDirectory: true
-        }
+				}
 			},
 			// add HTML assets to the build folder
-			// used to ensure index.html is carried through the build 
+			// used to ensure index.html is carried through the build
 			{
 				test: /\.html$/,
 				loader: 'file',
@@ -67,36 +67,36 @@ module.exports = {
 				}
 			},
 			// compile sass files using the sass-loader module
-      // stored in the compiled javascript file
-      {
-        test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
-      },
-      // compile css files using the css-loader module
-      // stored in the compiled javascript file
-      {
-        test: /\.css$/,
-        loaders: ['style', 'css', 'autoprefixer']
-      },
+			// stored in the compiled javascript file
+			{
+				test: /\.scss$/,
+				loaders: ['style', 'css', 'sass']
+			},
+			// compile css files using the css-loader module
+			// stored in the compiled javascript file
+			{
+				test: /\.css$/,
+				loaders: ['style', 'css', 'autoprefixer']
+			},
 			// compile local images
-      // hash file names to prevent cacheing
-      // copy into 'assets/img' sub-directory
-      {
-        test: /\.(png|jpg|gif|svg)$/,
+			// hash file names to prevent cacheing
+			// copy into 'assets/img' sub-directory
+			{
+				test: /\.(png|jpg|gif|svg)$/,
 				exclude: /node_modules/,
-        loader: 'file',
+				loader: 'file',
 				query: {
 					name: 'assets/img/img-[hash:6].[ext]'
 				}
-      },
+			},
 			{
-		  	test: /\.ico$/,
-		   	exclude: /node_modules/,
-		   	loader:'file',
+				test: /\.ico$/,
+				exclude: /node_modules/,
+				loader:'file',
 				query: {
 					name: '[name].[ext]'
 				}
-		 	},
+			},
 			{
 				test:   /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
 				loader: 'url',
