@@ -1,0 +1,123 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@3.5.2
+3 info using node@v4.2.4
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/kylemendes/Sites/fuzz-tools/generator-mortar',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/kylemendes/.npm/generator-mortar/0.1.8/package.tgz not in flight; packing
+9 info lifecycle generator-mortar@0.1.8~prepublish: generator-mortar@0.1.8
+10 silly lifecycle generator-mortar@0.1.8~prepublish: no script for prepublish, continuing
+11 verbose tar pack [ '/Users/kylemendes/.npm/generator-mortar/0.1.8/package.tgz',
+11 verbose tar pack   '/Users/kylemendes/Sites/fuzz-tools/generator-mortar' ]
+12 verbose tarball /Users/kylemendes/.npm/generator-mortar/0.1.8/package.tgz
+13 verbose folder /Users/kylemendes/Sites/fuzz-tools/generator-mortar
+14 verbose addLocalTarball adding from inside cache /Users/kylemendes/.npm/generator-mortar/0.1.8/package.tgz
+15 silly cache afterAdd generator-mortar@0.1.8
+16 verbose afterAdd /Users/kylemendes/.npm/generator-mortar/0.1.8/package/package.json not in flight; writing
+17 verbose afterAdd /Users/kylemendes/.npm/generator-mortar/0.1.8/package/package.json written
+18 silly publish { name: 'generator-mortar',
+18 silly publish   preferGlobal: true,
+18 silly publish   version: '0.1.8',
+18 silly publish   description: 'A Yeoman Generator for Mortar JS projects',
+18 silly publish   homepage: 'https://github.com/fuzz-productions/generator-mortar',
+18 silly publish   author:
+18 silly publish    { name: 'Fuzz Productions',
+18 silly publish      email: 'web@fuzzproductions.com',
+18 silly publish      url: 'https://fuzzproductions.com/' },
+18 silly publish   contributors:
+18 silly publish    [ { name: 'Kyle Mendes', email: 'kmendes@fuzzproductions.com' },
+18 silly publish      { name: 'Simon Yousoufov',
+18 silly publish        email: 'syousoufov@fuzzproductions.com' },
+18 silly publish      { name: 'Lea Yousoufov',
+18 silly publish        email: 'lyousoufov@fuzzproductions.com' },
+18 silly publish      { name: 'Walter Beller-Morales',
+18 silly publish        email: 'wbellermorales@fuzzproductions.com' } ],
+18 silly publish   license: 'MIT',
+18 silly publish   repository:
+18 silly publish    { type: 'git',
+18 silly publish      url: 'git+ssh://git@github.com/fuzz-productions/generator-mortar.git' },
+18 silly publish   files: [ 'app' ],
+18 silly publish   main: 'app/index.js',
+18 silly publish   keywords: [ 'yeoman-generator' ],
+18 silly publish   scripts: { _prepublish: 'gulp prepublish', test: 'gulp' },
+18 silly publish   dependencies:
+18 silly publish    { chalk: '^1.1.1',
+18 silly publish      mkdirp: '^0.5.1',
+18 silly publish      'yeoman-generator': '^0.20.2',
+18 silly publish      yosay: '^1.1.0' },
+18 silly publish   devDependencies:
+18 silly publish    { eslint: '^1.10.3',
+18 silly publish      'eslint-config-xo-space': '^0.7.0',
+18 silly publish      'eslint-plugin-react': '^3.14.0',
+18 silly publish      gulp: '^3.9.0',
+18 silly publish      'gulp-eslint': '^1.0.0',
+18 silly publish      'gulp-exclude-gitignore': '^1.0.0',
+18 silly publish      'gulp-istanbul': '^0.10.3',
+18 silly publish      'gulp-mocha': '^2.0.0',
+18 silly publish      'gulp-nsp': '^2.1.0',
+18 silly publish      'gulp-plumber': '^1.0.0' },
+18 silly publish   readme: '# Yeoman Generator for Mortar.js Projects\n\n<p align="center">\n  <img src="https://cdn.rawgit.com/fuzz-productions/generator-mortar/master/logo.svg" />\n</p>\n\n\n[Mortar.js](http://mortarjs.io/) is an opensource framework built with React that makes interacting and updating data quick, easy, and powerful. It can best be described as an Admin User Interface that allows developers to quickly and safely build sites to interface with an API without accessing the database directly.\n\nThis generator makes it extreamly easy to begin a React & Mortar project by taking care of the directory structure, installing dependecies, and the build process. The end result will allow you to build using React, JSX, ES6, and — of course — Mortar.\n\n\n## Prerequisites\n  - Yeoman and Gulp through `npm install -g yo gulp`\n\n## Installation\n  1. Run `npm install -g generator-mortar` to install the generator.\n  2. Run `yo mortar` to start the generator.\n  3. Follow the command line prompts.\n  4. Grab a cup of :coffee: and relax while the generators churns.\n  5. Scaffolding is done! You are ready to start developing with Mortar!\n\n## Development\n  1. Clone this repository.\n  2. Run `npm install` to install generator dev dependencies.\n  3. Use `npm link` to install the mortar yeoman generator locally for testing.\n  4. Test suite is managed by gulp and executed with `npm test`.\n\n## Mortar Project Directory Structure\nThe end result of this yeoman generator will produce the following project structure:\n\n- `node_modules` Installed third party packages including [Mortar.js](http://mortarjs.io/).\n- `src`\n  - `actions`\n  - `components`\n    - `authentication`\n      - `login`\n    - `global`\n      - `app`\n      - `header`\n    - `visualization`\n      - `exports`\n  - `config`\n  - `constants`\n  - `pages`\n  -   `dashboard`\n  - `public`\n    - `images`\n  - `stores`\n  - `styles`\n    - `css`\n    - `fonts`\n    - `partials`\n  - `utils`\n  - `app-container.js`\n  - `assets.js`\n  - `bootstrap.js`\n  - `main.js` **Required entry point for Webpack**\n  - `index.html`\n  - `routes.js`\n- `.gitignore` Git ignore rules for Mortar.js projects.\n- `.jshintrc` Custom javascript hinting rules applied using JSHint.\n- `package.json` List of `npm` dependencies and commands to build / compile your application.\n- `README.md`\n- `webpack.config.js` Webpack bundler process to build and unify all javascript, css, sass, image, and font dependencies.\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   gitHead: '3b412479e97488dd5099a7bd60e3cda453884d03',
+18 silly publish   bugs: { url: 'https://github.com/fuzz-productions/generator-mortar/issues' },
+18 silly publish   _id: 'generator-mortar@0.1.8',
+18 silly publish   _shasum: '5822f0f24f07af16020ab27f8eccfd40f5033320',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name generator-mortar
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/generator-mortar
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading /Users/kylemendes/.npm/generator-mortar/0.1.8/package.tgz
+26 verbose request uri https://registry.npmjs.org/generator-mortar
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 5:42:19 PM
+29 verbose request using bearer token for auth
+30 verbose request id 79ee9928d0de0391
+31 http request PUT https://registry.npmjs.org/generator-mortar
+32 http 403 https://registry.npmjs.org/generator-mortar
+33 verbose headers { 'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=300',
+33 verbose headers   'content-length': '95',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Thu, 21 Jan 2016 22:42:20 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-atl6229-ATL',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1453416139.978603,VS0,VE990' }
+34 verbose request invalidating /Users/kylemendes/.npm/registry.npmjs.org/generator-mortar on PUT
+35 error publish Failed PUT 403
+36 verbose stack Error: "You cannot publish over the previously published version 0.1.8." : generator-mortar
+36 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+36 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+36 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+36 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+36 verbose stack     at emitTwo (events.js:87:13)
+36 verbose stack     at Request.emit (events.js:172:7)
+36 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1082:10)
+36 verbose stack     at emitOne (events.js:82:20)
+36 verbose stack     at Request.emit (events.js:169:7)
+36 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+37 verbose statusCode 403
+38 verbose pkgid generator-mortar
+39 verbose cwd /Users/kylemendes/Sites/fuzz-tools/generator-mortar
+40 error Darwin 14.0.0
+41 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+42 error node v4.2.4
+43 error npm  v3.5.2
+44 error code E403
+45 error "You cannot publish over the previously published version 0.1.8." : generator-mortar
+46 error If you need help, you may report this error at:
+46 error     <https://github.com/npm/npm/issues>
+47 verbose exit [ 1, true ]
