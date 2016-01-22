@@ -51,7 +51,6 @@ require('./index.html');
  * @type {exports}
  */
 require('./assets');
-require('./utils/string.js');
 
 /**
  * Pull in image assets
