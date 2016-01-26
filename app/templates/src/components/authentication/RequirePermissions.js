@@ -46,7 +46,7 @@ var RequirePermissions = React.createClass({
 	 * @private
 	 */
 	_getUserPermissions: function () {
-		return CmsUserStore.getUserPermissions();
+		return CmsUserStore.scopes();
 	},
 
 	/**
