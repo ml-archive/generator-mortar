@@ -414,10 +414,6 @@ module.exports = yeoman.generators.Base.extend({
 				this.templatePath('src/utils/ResourceApi.js'),
 				this.destinationPath('src/utils/ResourceApi.js')
 			);
-			this.fs.copy(
-				this.templatePath('src/utils/string.js'),
-				this.destinationPath('src/utils/string.js')
-			);
 		}
 	},
 	// Install app dependencies
