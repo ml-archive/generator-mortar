@@ -4,7 +4,6 @@ var Router = require('react-router');
 var _ = require('lodash');
 var AuthenticationActionCreators = MortarJS.Actions.AuthenticationServerActionCreators;
 var Form = MortarJS.Components.ResourceBinding.Form.Form;
-var ModalButton = MortarJS.Components.Global.OpenModalButton;
 var QueryHelper = MortarJS.Utils.QueryHelper;
 var FormStore = MortarJS.Stores.FormStore;
 var headerConfig = require('../../../config/config').header;
@@ -227,12 +226,6 @@ var Login = React.createClass({
 														identifier:     'id',
 														optionResource: {rememberMe: true}
 													}]} />
-												</Form.Column>
-
-												<Form.Column grid="sm" size="4">
-													<ModalButton buttonText="Forgot Password"
-														classNames="btn btn-link btn-xs pull-right btn-forgot-password"
-														handleOpenModal={this.toggleForgotPasswordModal} />
 												</Form.Column>
 											</Form.Row>
 
