@@ -65,11 +65,10 @@ module.exports = yeoman.generators.Base.extend({
 			done();
 		}.bind(this));
 	},
-	testing: console.log(this.props.installType),
 	writing: {
 		// Copy the configuration files to app root directory
 		config: function () {
-
+			console.log(this.props.installType),
 			// Copy package.json
 			this.fs.copyTpl(
 				this.templatePath('package.json'),
@@ -98,98 +97,29 @@ module.exports = yeoman.generators.Base.extend({
 		},
 		// Create app directory structure
 		scaffoldFolders: function () {
-
-			mkdirp('src', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/actions', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/authentication', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/authentication/login', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/global', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/global/app', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/global/header', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/global/header/navigation', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/visualization', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/visualization/exports', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/config', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/constants', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/pages', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/pages/dashboard', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/public', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/public/images', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/stores', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/styles', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/styles/css', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/styles/fonts', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/styles/partials', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/utils', function (err) {
-				if (err) console.error(err);
-			});
+			mkdirp.sync('src');
+			mkdirp.sync('src/actions');
+			mkdirp.sync('src/components');
+			mkdirp.sync('src/components/authentication');
+			mkdirp.sync('src/components/authentication/login');
+			mkdirp.sync('src/components/global');
+			mkdirp.sync('src/components/global/app');
+			mkdirp.sync('src/components/global/header');
+			mkdirp.sync('src/components/global/header/navigation');
+			mkdirp.sync('src/components/visualization');
+			mkdirp.sync('src/components/visualization/exports');
+			mkdirp.sync('src/config');
+			mkdirp.sync('src/constants');
+			mkdirp.sync('src/pages');
+			mkdirp.sync('src/pages/dashboard');
+			mkdirp.sync('src/public');
+			mkdirp.sync('src/public/images');
+			mkdirp.sync('src/stores');
+			mkdirp.sync('src/styles');
+			mkdirp.sync('src/styles/css');
+			mkdirp.sync('src/styles/fonts');
+			mkdirp.sync('src/styles/partials');
+			mkdirp.sync('src/utils');
 		},
 		// Copy scaffolding content files
 		copyMainFiles: function () {
