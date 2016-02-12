@@ -23,7 +23,7 @@
     "jquery": "^2.1.4",
     "lodash": "^3.9.3",
     "moment": "^2.10.6",
-    "mortarjs": "git+https://github.com/fuzz-productions/Mortar-JS.git",
+    "mortarjs": "^1.0.0",
     "normalize.css": "~3.0.3",
     "react": "^0.13.x",
     "react-bootstrap": "^0.28.2",

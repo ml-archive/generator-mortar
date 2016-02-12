@@ -2,12 +2,15 @@ module.exports = function (navbarConfig) {
 	var React = require('react/addons');
 	var NavButton = require('./NavButton');
 	var NavSearch = require('./NavSearch');
-	var RequirePermissions = require('../../../authentication/RequirePermissions');
+	<% if (installType == "auth") {
+	%>var RequirePermissions = require('../../../authentication/RequirePermissions');<%
+	} %>
 
 	return React.createClass({
 		buttons: function () {
 			return navbarConfig.map(function (button, index) {
-				if (Array.isArray(button.permissions)) {
+				<% if (installType == "auth") {
+				%>if (Array.isArray(button.permissions)) {
 					return (
 						<RequirePermissions key={index} requiredPermissions={button.permissions}>
 							<NavButton key={index} button={button} />
@@ -17,7 +20,11 @@ module.exports = function (navbarConfig) {
 					return (
 						<NavButton key={index} button={button} />
 					)
-				}
+				}<% } else {
+					%>return (
+						<NavButton key={index} button={button} />
+					)<%
+				} %>
 			});
 		},
 

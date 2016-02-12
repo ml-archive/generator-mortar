@@ -3,19 +3,23 @@ var React = require('react/addons');
 var Router = require('react-router');
 var assign = require('react/lib/Object.assign');
 var RouteHandler = Router.RouteHandler;
-var Login = MortarJS.Components.Authentication.Login.Login;
+<% if (installType == "auth") {
+%>var Login = MortarJS.Components.Authentication.Login.Login;<%
+} %>
 var AlertHandler = MortarJS.Components.Global.AlertHandler;
 var Header = require('../header/Header');
 var CmsUserStore = require('../../../stores/CmsUserStore');
-var SignOutConfirmationModal =  require('../../authentication/login/SignOutConfirmationModal');
-var RequireAuth = require('../../authentication/RequireAuthentication');
+<% if (installType == "auth") {
+%>var SignOutConfirmationModal =  require('../../authentication/login/SignOutConfirmationModal');
+var RequireAuth = require('../../authentication/RequireAuthentication');<%
+} %>
 
 /**
  * Wrapper for the CMS application
  *
  * @type {*|exports}
  */
-var App = RequireAuth(
+var App = <% if (installType == "auth") { %>RequireAuth(<% } %>
 	React.createClass({
 		/**
 		 * Used to state based on user authentication status
@@ -64,7 +68,8 @@ var App = RequireAuth(
 		 * @returns {JSX}
 		 */
 		renderApp: function () {
-			if (! this.state.loggedIn) {
+			<% if (installType == "auth") {
+			%>if (! this.state.loggedIn) {
 				return (
 					<div id="wrapper">
 						{! CmsUserStore.isVeryifyingAccessToken() && (
@@ -83,17 +88,26 @@ var App = RequireAuth(
 
 						<AlertHandler />
 
-						<SignOutConfirmationModal openWhen={this.state.userIsRequestingSignOut} />
 					</div>
 				)
-			}
+			}<%} else {
+				%>return (
+					<div id="wrapper">
+						<Header />
+
+						<RouteHandler />
+
+						<AlertHandler />
+
+					</div>
+				)<%
+			}%>
 		},
 
 		render: function () {
 			return this.renderApp();
 		}
 	})
-);
+<% if (installType == "auth") { %>);<% } %>
 
 module.exports = App;
-

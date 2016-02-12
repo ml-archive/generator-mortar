@@ -37,6 +37,24 @@ module.exports = yeoman.generators.Base.extend({
 				name    : 'projectAuthor',
 				message : 'Author or creator:',
 				default : 'Mordecai Rigby'
+			},
+
+			// Installation type
+			{
+				type: 'list',
+				name: 'installType',
+				message: "What type of installation would you like?",
+				choices: [
+					{
+						name: "basic installation",
+						value: "basic"
+					},
+					{
+						name: "installation with authentication",
+						value: "auth"
+					}
+				]
+
 			}
 		];
 
@@ -47,11 +65,9 @@ module.exports = yeoman.generators.Base.extend({
 			done();
 		}.bind(this));
 	},
-
 	writing: {
 		// Copy the configuration files to app root directory
-		config: function () {
-
+		copyConfig: function () {
 			// Copy package.json
 			this.fs.copyTpl(
 				this.templatePath('package.json'),
@@ -77,104 +93,43 @@ module.exports = yeoman.generators.Base.extend({
 			// Copy README
 			this.fs.copy( this.templatePath('README.md'), this.destinationPath('README.md') );
 
+			// Copy favicon
+			this.fs.copy( this.templatePath('favicon.ico'), this.destinationPath('favicon.ico') );
+
+			// Copy Mortar logo
+			this.fs.copy( this.templatePath('mortar-logo.png'), this.destinationPath('mortar-logo.png') );
+
 		},
 		// Create app directory structure
 		scaffoldFolders: function () {
-
-			mkdirp('src', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/actions', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/authentication', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/authentication/login', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/global', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/global/app', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/global/header', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/global/header/navigation', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/visualization', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/components/visualization/exports', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/config', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/constants', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/pages', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/pages/dashboard', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/public', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/public/images', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/stores', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/styles', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/styles/css', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/styles/fonts', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/styles/partials', function (err) {
-				if (err) console.error(err);
-			});
-
-			mkdirp('src/utils', function (err) {
-				if (err) console.error(err);
-			});
+			mkdirp.sync('src');
+			mkdirp.sync('src/actions');
+			mkdirp.sync('src/components');
+			if (this.props.installType === "auth") {
+				mkdirp.sync('src/components/authentication');
+				mkdirp.sync('src/components/authentication/login');
+			}
+			mkdirp.sync('src/components/global');
+			mkdirp.sync('src/components/global/app');
+			mkdirp.sync('src/components/global/header');
+			mkdirp.sync('src/components/global/header/navigation');
+			mkdirp.sync('src/components/visualization');
+			mkdirp.sync('src/components/visualization/exports');
+			mkdirp.sync('src/config');
+			mkdirp.sync('src/constants');
+			mkdirp.sync('src/pages');
+			mkdirp.sync('src/pages/dashboard');
+			mkdirp.sync('src/public');
+			mkdirp.sync('src/public/images');
+			mkdirp.sync('src/stores');
+			mkdirp.sync('src/styles');
+			mkdirp.sync('src/styles/css');
+			mkdirp.sync('src/styles/fonts');
+			mkdirp.sync('src/styles/partials');
+			mkdirp.sync('src/utils');
 		},
 		// Copy scaffolding content files
-		copyMainFiles: function () {
+		copyMain: function () {
 			// Copy index.html
 			this.fs.copyTpl(
 				this.templatePath('src/index.html'),
@@ -186,9 +141,11 @@ module.exports = yeoman.generators.Base.extend({
 			);
 
 			// Copy files to /src directory
-			this.fs.copy(
+			this.fs.copyTpl(
 				this.templatePath('src/app-container.js'),
-				this.destinationPath('src/app-container.js')
+				this.destinationPath('src/app-container.js'), {
+					installType : this.props.installType
+				}
 			);
 			this.fs.copy(
 				this.templatePath('src/assets.js'),
@@ -198,73 +155,35 @@ module.exports = yeoman.generators.Base.extend({
 				this.templatePath('src/bootstrap.js'),
 				this.destinationPath('src/bootstrap.js')
 			);
-			this.fs.copy(
+			this.fs.copyTpl(
 				this.templatePath('src/main.js'),
-				this.destinationPath('src/main.js')
+				this.destinationPath('src/main.js'), {
+					installType : this.props.installType
+				}
 			);
 			this.fs.copy(
 				this.templatePath('src/menu.js'),
 				this.destinationPath('src/menu.js')
 			);
-			this.fs.copy(
+			this.fs.copyTpl(
 				this.templatePath('src/routes.js'),
-				this.destinationPath('src/routes.js')
+				this.destinationPath('src/routes.js'), {
+					installType : this.props.installType
+				}
 			);
-			this.fs.copy(
-				this.templatePath('src/routes.js'),
-				this.destinationPath('src/routes.js')
-			);
-
-			// Copy files to /src/actions directory
-			this.fs.copy(
-				this.templatePath('src/actions/AuthenticationServerActionCreators.js'),
-				this.destinationPath('src/actions/AuthenticationServerActionCreators.js')
-			);
+		},
+		copyCommon: function() {
 			this.fs.copy(
 				this.templatePath('src/actions/ResourceActionCreators.js'),
 				this.destinationPath('src/actions/ResourceActionCreators.js')
 			);
 
-			// Copy files to /src/components/authentication directory
-			this.fs.copy(
-				this.templatePath('src/components/authentication/RequireAuthentication.js'),
-				this.destinationPath('src/components/authentication/RequireAuthentication.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/authentication/RequirePermissions.js'),
-				this.destinationPath('src/components/authentication/RequirePermissions.js')
-			);
-
-			// Copy files to /src/components/authentication/login directory
-			this.fs.copy(
-				this.templatePath('src/components/authentication/login/ForgotPasswordModal.js'),
-				this.destinationPath('src/components/authentication/login/ForgotPasswordModal.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/authentication/login/Login.js'),
-				this.destinationPath('src/components/authentication/login/Login.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/authentication/login/Logout.js'),
-				this.destinationPath('src/components/authentication/login/Logout.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/authentication/login/PasswordResetModal.js'),
-				this.destinationPath('src/components/authentication/login/PasswordResetModal.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/authentication/login/SignOutConfirmationModal.js'),
-				this.destinationPath('src/components/authentication/login/SignOutConfirmationModal.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/authentication/login/SignOutHeaderLink.js'),
-				this.destinationPath('src/components/authentication/login/SignOutHeaderLink.js')
-			);
-
 			// Copy files to /src/components/global/app directory
-			this.fs.copy(
+			this.fs.copyTpl(
 				this.templatePath('src/components/global/app/App.js'),
-				this.destinationPath('src/components/global/app/App.js')
+				this.destinationPath('src/components/global/app/App.js'), {
+					installType : this.props.installType
+				}
 			);
 
 			// Copy files to /src/components/global/header directory
@@ -276,21 +195,25 @@ module.exports = yeoman.generators.Base.extend({
 				this.templatePath('src/components/global/header/HeaderButton.js'),
 				this.destinationPath('src/components/global/header/HeaderButton.js')
 			);
-			this.fs.copy(
+			this.fs.copyTpl(
 				this.templatePath('src/components/global/header/HeaderButtonDropdown.js'),
-				this.destinationPath('src/components/global/header/HeaderButtonDropdown.js')
+				this.destinationPath('src/components/global/header/HeaderButtonDropdown.js'), {
+					installType : this.props.installType
+				}
 			);
 			this.fs.copy(
 				this.templatePath('src/components/global/header/HeaderButtonDropdownItem.js'),
 				this.destinationPath('src/components/global/header/HeaderButtonDropdownItem.js')
 			);
-			this.fs.copy(
+			this.fs.copyTpl(
 				this.templatePath('src/components/global/header/HeaderButtonDropdownSection.js'),
 				this.destinationPath('src/components/global/header/HeaderButtonDropdownSection.js')
 			);
-			this.fs.copy(
+			this.fs.copyTpl(
 				this.templatePath('src/components/global/header/HeaderButtons.js'),
-				this.destinationPath('src/components/global/header/HeaderButtons.js')
+				this.destinationPath('src/components/global/header/HeaderButtons.js'), {
+					installType : this.props.installType
+				}
 			);
 			this.fs.copy(
 				this.templatePath('src/components/global/header/HeaderLogo.js'),
@@ -302,17 +225,17 @@ module.exports = yeoman.generators.Base.extend({
 				this.templatePath('src/components/global/header/navigation/NavBar.js'),
 				this.destinationPath('src/components/global/header/navigation/NavBar.js')
 			);
-			this.fs.copy(
+			this.fs.copyTpl(
 				this.templatePath('src/components/global/header/navigation/NavButton.js'),
-				this.destinationPath('src/components/global/header/navigation/NavButton.js')
+				this.destinationPath('src/components/global/header/navigation/NavButton.js'), {
+					installType : this.props.installType
+				}
 			);
-			this.fs.copy(
+			this.fs.copyTpl(
 				this.templatePath('src/components/global/header/navigation/NavButtons.js'),
-				this.destinationPath('src/components/global/header/navigation/NavButtons.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/global/header/navigation/NavLogo.js'),
-				this.destinationPath('src/components/global/header/navigation/NavLogo.js')
+				this.destinationPath('src/components/global/header/navigation/NavButtons.js'), {
+					installType : this.props.installType
+				}
 			);
 			this.fs.copy(
 				this.templatePath('src/components/global/header/navigation/NavSearch.js'),
@@ -367,10 +290,63 @@ module.exports = yeoman.generators.Base.extend({
 				this.destinationPath('src/stores/CmsUserStore.js')
 			);
 
-			// Copy files to /src/styles directory
+		},
+		copyAuthentication: function () {
+			if (this.props.installType === "auth") {
+				// Copy files to /src/actions directory
+				this.fs.copy(
+					this.templatePath('src/actions/AuthenticationServerActionCreators.js'),
+					this.destinationPath('src/actions/AuthenticationServerActionCreators.js')
+				);
+
+				// Copy files to /src/components/authentication directory
+				this.fs.copy(
+					this.templatePath('src/components/authentication/RequireAuthentication.js'),
+					this.destinationPath('src/components/authentication/RequireAuthentication.js')
+				);
+				this.fs.copy(
+					this.templatePath('src/components/authentication/RequirePermissions.js'),
+					this.destinationPath('src/components/authentication/RequirePermissions.js')
+				);
+
+				// Copy files to /src/components/authentication/login directory
+				this.fs.copy(
+					this.templatePath('src/components/authentication/login/ForgotPasswordModal.js'),
+					this.destinationPath('src/components/authentication/login/ForgotPasswordModal.js')
+				);
+				this.fs.copy(
+					this.templatePath('src/components/authentication/login/Login.js'),
+					this.destinationPath('src/components/authentication/login/Login.js')
+				);
+				this.fs.copy(
+					this.templatePath('src/components/authentication/login/Logout.js'),
+					this.destinationPath('src/components/authentication/login/Logout.js')
+				);
+				this.fs.copy(
+					this.templatePath('src/components/authentication/login/PasswordResetModal.js'),
+					this.destinationPath('src/components/authentication/login/PasswordResetModal.js')
+				);
+				this.fs.copy(
+					this.templatePath('src/components/authentication/login/SignOutConfirmationModal.js'),
+					this.destinationPath('src/components/authentication/login/SignOutConfirmationModal.js')
+				);
+				this.fs.copy(
+					this.templatePath('src/components/authentication/login/SignOutHeaderLink.js'),
+					this.destinationPath('src/components/authentication/login/SignOutHeaderLink.js')
+				);
+			}
 			this.fs.copy(
+				this.templatePath('src/utils/AuthenticationApi.js'),
+				this.destinationPath('src/utils/AuthenticationApi.js')
+			);
+		},
+		copyStyles: function() {
+			// Copy files to /src/styles directory
+			this.fs.copyTpl(
 				this.templatePath('src/styles/main.scss'),
-				this.destinationPath('src/styles/main.scss')
+				this.destinationPath('src/styles/main.scss'), {
+					installType: this.props.installType
+				}
 			);
 
 			// Copy files to /src/styles/css directory
@@ -400,15 +376,12 @@ module.exports = yeoman.generators.Base.extend({
 				this.templatePath('src/styles/fonts/Material-Design-Icons.woff'),
 				this.destinationPath('src/styles/fonts/Material-Design-Icons.woff')
 			);
-
+		},
+		copyUtils: function() {
 			// Copy files to /src/utils directory
 			this.fs.copy(
 				this.templatePath('src/utils/ApiService.js'),
 				this.destinationPath('src/utils/ApiService.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/utils/AuthenticationApi.js'),
-				this.destinationPath('src/utils/AuthenticationApi.js')
 			);
 			this.fs.copy(
 				this.templatePath('src/utils/ResourceApi.js'),
