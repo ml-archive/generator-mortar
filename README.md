@@ -17,6 +17,7 @@ This generator makes it extreamly easy to begin a React & Mortar project by taki
   1. Run `npm install -g generator-mortar` to install the generator.
   2. Run `yo mortar` to start the generator.
   3. Follow the command line prompts.
+    - You will have the option to include authentication if your application & API requires it. 
   4. Grab a cup of :coffee: and relax while the generators churns.
   5. Scaffolding is done! You are ready to start developing with Mortar!
 
@@ -33,8 +34,8 @@ The end result of this yeoman generator will produce the following project struc
 - `src`
   - `actions`
   - `components`
-    - `authentication`
-      - `login`
+    - `authentication` _optional_
+      - `login` _optional_
     - `global`
       - `app`
       - `header`
