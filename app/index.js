@@ -37,6 +37,24 @@ module.exports = yeoman.generators.Base.extend({
 				name    : 'projectAuthor',
 				message : 'Author or creator:',
 				default : 'Mordecai Rigby'
+			},
+
+			// Installation type
+			{
+				type: 'list',
+				name: 'installType',
+				message: "What type of installation would you like?",
+				choices: [
+					{
+						name: "basic installation",
+						value: "basic"
+					},
+					{
+						name: "installation with authentication",
+						value: "auth"
+					}
+				]
+
 			}
 		];
 
@@ -47,7 +65,7 @@ module.exports = yeoman.generators.Base.extend({
 			done();
 		}.bind(this));
 	},
-
+	testing: console.log(this.props.installType),
 	writing: {
 		// Copy the configuration files to app root directory
 		config: function () {
