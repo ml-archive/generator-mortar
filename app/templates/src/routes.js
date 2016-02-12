@@ -13,8 +13,10 @@ var DefaultRoute  = Router.DefaultRoute;
  */
 var MortarJS = require('./bootstrap').MortarJS;
 var App      = MortarJS.Components.Global.App;
-var Login    = MortarJS.Components.Authentication.Login.Login;
-var Logout   = MortarJS.Components.Authentication.Login.Logout;
+<% if (installType == "auth") {
+%>var Login    = MortarJS.Components.Authentication.Login.Login;
+var Logout   = MortarJS.Components.Authentication.Login.Logout;<%
+} %>
 
 /**
  * CMS Pages
@@ -34,9 +36,11 @@ var Dashboard = require('./pages/dashboard/Dashboard');
  */
 var Routes = (
 	<Route path="/" handler={App}>
-		<Route name="login"          handler ={Login} />
+		<% if (installType === "auth") {
+		%><Route name="login"          handler ={Login} />
 		<Route name="logout"         handler ={Logout} />
-		<Route name="password-reset" handler ={Login} />
+		<Route name="password-reset" handler ={Login} /><%
+		} %>
 		<Route name="index"          handler ={Dashboard} />
 
 		<NotFoundRoute handler={Dashboard} />

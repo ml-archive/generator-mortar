@@ -1,12 +1,15 @@
 var React = require('react/addons');
 var HeaderButtonDropDownItem = require('./HeaderButtonDropdownItem');
-var SignOutLink = require('../../authentication/login/SignOutHeaderLink');
-var RequirePermissions = require('../../authentication/RequirePermissions');
+<% if (installType == "auth") {
+%>var SignOutLink = require('../../authentication/login/SignOutHeaderLink');
+var RequirePermissions = require('../../authentication/RequirePermissions');<%
+} %>
 
 var HeaderButtonDropdown = React.createClass({
 	buildItems: function () {
 		return this.props.items.map(function (item, index) {
-			if (Array.isArray(item.permissions)) {
+			<% if (installType == "auth") {
+			%>if (Array.isArray(item.permissions)) {
 				return (
 					<RequirePermissions key={index} requiredPermissions={item.permissions}>
 						<HeaderButtonDropDownItem key={index} {...item} />
@@ -14,7 +17,9 @@ var HeaderButtonDropdown = React.createClass({
 				)
 			} else {
 				return <HeaderButtonDropDownItem key={index} {...item} />;
-			}
+			}<% } else {
+				%>return <HeaderButtonDropDownItem key={index} {...item} />;<%
+			} %>
 		});
 	},
 
@@ -22,7 +27,7 @@ var HeaderButtonDropdown = React.createClass({
 		return (
 			<ul className="dropdown-menu dropdown-user">
 				{this.buildItems()}
-				<SignOutLink />
+				<% if (installType == "auth") {%><SignOutLink /><%} %>
 			</ul>
 		)
 	}

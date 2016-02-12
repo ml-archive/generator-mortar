@@ -1,4 +1,16 @@
-.navbar .required-permissions a {
+$navy: #0d2038;
+
+body {
+  font-size: 16px;
+  color: $navy;
+}
+
+.navbar-inverse.navbar {
+  background-color: #EB6864;
+}
+
+<% if (installType == "auth") {
+%>.navbar .required-permissions a {
   display: block;
   padding: 3px 20px;
   clear: both;
@@ -7,4 +19,4 @@
   color: #333;
   white-space: nowrap;
   text-decoration: none;
-}
+}<% } %>

@@ -11,7 +11,9 @@ var CmsUserStore = require('./stores/CmsUserStore');
 var MortarJS     = require('./bootstrap').MortarJS;
 var AppContainer = require('./app-container').MortarJS;
 
-var AuthenticationServerActionCreators = AppContainer.Actions.AuthenticationServerActionCreators;
+<% if (installType == "auth") {
+%>var AuthenticationServerActionCreators = AppContainer.Actions.AuthenticationServerActionCreators;<%
+} %>
 
 /**
  * Pull in application routes
@@ -20,7 +22,8 @@ var AuthenticationServerActionCreators = AppContainer.Actions.AuthenticationServ
  */
 var Routes = require('./routes');
 
-// Validate access token
+<% if (installType == "auth") {
+%>// Validate access token
 if (CmsUserStore.isTokenExpired()) {
 	// Refresh the token, since it's expiring or about to expire
 	var refreshToken = CmsUserStore.getRefreshToken();
@@ -30,7 +33,8 @@ if (CmsUserStore.isTokenExpired()) {
 	if (token) {
 		AuthenticationServerActionCreators.loginWithToken(token);
 	}
-}
+}<%
+} %>
 
 // Attach react router
 window.__app_container = document.getElementById('root');

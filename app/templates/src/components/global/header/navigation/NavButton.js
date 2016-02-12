@@ -1,7 +1,9 @@
 var React = require('react/addons');
 var NavSecondLevel = require('./NavSecondLevel');
 var NavThirdLevel = require('./NavThirdLevel');
-var RequirePermissions = require('../../../authentication/RequirePermissions');
+<% if (installType == "auth") {
+%>var RequirePermissions = require('../../../authentication/RequirePermissions');<%
+} %>
 
 var NavButton = React.createClass({
 	propTypes: {
@@ -13,7 +15,8 @@ var NavButton = React.createClass({
 
 	children: function() {
 		return this.props.button.children.map(function(button, index) {
-			if (Array.isArray(button.permissions)) {
+			<% if (installType == "auth") {
+			%>if (Array.isArray(button.permissions)) {
 				return (
 					<RequirePermissions key={index} requiredPermissions={button.permissions}>
 						<NavSecondLevel key={index} button={button} />
@@ -23,7 +26,11 @@ var NavButton = React.createClass({
 				return (
 					<NavSecondLevel key={index} button={button} />
 				)
-			}
+			}<% } else {
+				%>return (
+					<NavSecondLevel key={index} button={button} />
+				)<%
+			}%>
 		});
 	},
 
