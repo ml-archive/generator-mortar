@@ -67,8 +67,8 @@ module.exports = yeoman.generators.Base.extend({
 	},
 	writing: {
 		// Copy the configuration files to app root directory
-		config: function () {
-			console.log(this.props.installType),
+		copyConfig: function () {
+			console.log(this.props.installType);
 			// Copy package.json
 			this.fs.copyTpl(
 				this.templatePath('package.json'),
@@ -122,7 +122,7 @@ module.exports = yeoman.generators.Base.extend({
 			mkdirp.sync('src/utils');
 		},
 		// Copy scaffolding content files
-		copyMainFiles: function () {
+		copyMain: function () {
 			// Copy index.html
 			this.fs.copyTpl(
 				this.templatePath('src/index.html'),
@@ -162,53 +162,12 @@ module.exports = yeoman.generators.Base.extend({
 				this.templatePath('src/routes.js'),
 				this.destinationPath('src/routes.js')
 			);
-
-			// Copy files to /src/actions directory
-			this.fs.copy(
-				this.templatePath('src/actions/AuthenticationServerActionCreators.js'),
-				this.destinationPath('src/actions/AuthenticationServerActionCreators.js')
-			);
+		},
+		copyCommon: function() {
 			this.fs.copy(
 				this.templatePath('src/actions/ResourceActionCreators.js'),
 				this.destinationPath('src/actions/ResourceActionCreators.js')
 			);
-
-			// Copy files to /src/components/authentication directory
-			this.fs.copy(
-				this.templatePath('src/components/authentication/RequireAuthentication.js'),
-				this.destinationPath('src/components/authentication/RequireAuthentication.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/authentication/RequirePermissions.js'),
-				this.destinationPath('src/components/authentication/RequirePermissions.js')
-			);
-
-			// Copy files to /src/components/authentication/login directory
-			this.fs.copy(
-				this.templatePath('src/components/authentication/login/ForgotPasswordModal.js'),
-				this.destinationPath('src/components/authentication/login/ForgotPasswordModal.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/authentication/login/Login.js'),
-				this.destinationPath('src/components/authentication/login/Login.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/authentication/login/Logout.js'),
-				this.destinationPath('src/components/authentication/login/Logout.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/authentication/login/PasswordResetModal.js'),
-				this.destinationPath('src/components/authentication/login/PasswordResetModal.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/authentication/login/SignOutConfirmationModal.js'),
-				this.destinationPath('src/components/authentication/login/SignOutConfirmationModal.js')
-			);
-			this.fs.copy(
-				this.templatePath('src/components/authentication/login/SignOutHeaderLink.js'),
-				this.destinationPath('src/components/authentication/login/SignOutHeaderLink.js')
-			);
-
 			// Copy files to /src/components/global/app directory
 			this.fs.copy(
 				this.templatePath('src/components/global/app/App.js'),
@@ -315,6 +274,51 @@ module.exports = yeoman.generators.Base.extend({
 				this.destinationPath('src/stores/CmsUserStore.js')
 			);
 
+		},
+		copyAuthentication: function () {
+			// Copy files to /src/actions directory
+			this.fs.copy(
+				this.templatePath('src/actions/AuthenticationServerActionCreators.js'),
+				this.destinationPath('src/actions/AuthenticationServerActionCreators.js')
+			);
+
+			// Copy files to /src/components/authentication directory
+			this.fs.copy(
+				this.templatePath('src/components/authentication/RequireAuthentication.js'),
+				this.destinationPath('src/components/authentication/RequireAuthentication.js')
+			);
+			this.fs.copy(
+				this.templatePath('src/components/authentication/RequirePermissions.js'),
+				this.destinationPath('src/components/authentication/RequirePermissions.js')
+			);
+
+			// Copy files to /src/components/authentication/login directory
+			this.fs.copy(
+				this.templatePath('src/components/authentication/login/ForgotPasswordModal.js'),
+				this.destinationPath('src/components/authentication/login/ForgotPasswordModal.js')
+			);
+			this.fs.copy(
+				this.templatePath('src/components/authentication/login/Login.js'),
+				this.destinationPath('src/components/authentication/login/Login.js')
+			);
+			this.fs.copy(
+				this.templatePath('src/components/authentication/login/Logout.js'),
+				this.destinationPath('src/components/authentication/login/Logout.js')
+			);
+			this.fs.copy(
+				this.templatePath('src/components/authentication/login/PasswordResetModal.js'),
+				this.destinationPath('src/components/authentication/login/PasswordResetModal.js')
+			);
+			this.fs.copy(
+				this.templatePath('src/components/authentication/login/SignOutConfirmationModal.js'),
+				this.destinationPath('src/components/authentication/login/SignOutConfirmationModal.js')
+			);
+			this.fs.copy(
+				this.templatePath('src/components/authentication/login/SignOutHeaderLink.js'),
+				this.destinationPath('src/components/authentication/login/SignOutHeaderLink.js')
+			);
+		},
+		copyStyles: function() {
 			// Copy files to /src/styles directory
 			this.fs.copy(
 				this.templatePath('src/styles/main.scss'),
@@ -348,7 +352,8 @@ module.exports = yeoman.generators.Base.extend({
 				this.templatePath('src/styles/fonts/Material-Design-Icons.woff'),
 				this.destinationPath('src/styles/fonts/Material-Design-Icons.woff')
 			);
-
+		},
+		copyUtils: function() {
 			// Copy files to /src/utils directory
 			this.fs.copy(
 				this.templatePath('src/utils/ApiService.js'),
