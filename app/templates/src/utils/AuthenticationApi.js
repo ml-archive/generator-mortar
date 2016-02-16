@@ -65,7 +65,7 @@ var AuthenticationApi = {
 	},
 
 	resetPassword: function (data, options, cb) {
-		var data = assign(this.client, data);
+		data = assign(this.client, data);
 
 		options.noAuth = true;
 

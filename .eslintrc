@@ -14,8 +14,8 @@
       "no-undef": 0,
       "comma-dangle": 1,
       "no-mixed-spaces-and-tabs": [2, "smart-tabs"],
-      "no-console": 1,
-      "no-unused-vars": 1,
-      "no-extra-semi": 0
+      "no-console": 0,
+      "no-unused-vars": 0,
+      "no-extra-semi": 0,
   }
 }

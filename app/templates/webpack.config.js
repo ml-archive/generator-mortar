@@ -23,7 +23,7 @@ module.exports = {
 	entry: PATHS.main,
 	output: {
 		path: PATHS.output,
-		filename:   'main.js',
+		filename:   'main.js'
 	},
 
 	cache:   true,
