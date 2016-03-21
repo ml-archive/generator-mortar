@@ -54,7 +54,7 @@ MortarJS.Utils.ApiService = require('./utils/ApiService');
 MortarJS.require = function (type) {
 	var required = {};
 	var exportType = type.toLowerCase().charAt(0).toUpperCase() + type.slice(1);
-	var flattened = MortarJS.Flatten(MortarJS[exportType], '', {});
+	var flattened = MortarJS.flatten(MortarJS[exportType], '', {});
 
 	for (var key in arguments) {
 		var argument = arguments[key];
