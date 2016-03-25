@@ -3,7 +3,8 @@ var HeaderButtonDropdown = require('./HeaderButtonDropdown');
 
 var HeaderButton = React.createClass({
 	propTypes: {
-		iconName: React.PropTypes.string.isRequired
+		iconName : React.PropTypes.string.isRequired,
+		children : React.PropTypes.array
 	},
 
 	render: function () {
@@ -14,7 +15,7 @@ var HeaderButton = React.createClass({
 				</a>
 				<HeaderButtonDropdown {...this.props.children} />
 			</li>
-		)
+		);
 	}
 });
 

@@ -14,7 +14,7 @@ var Header = React.createClass({
 					<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
 				</a>
 			</li>
-		)
+		);
 	}
 });
 

@@ -7,18 +7,20 @@ var CmsUserStore = MortarJS.Stores.CmsUserStore;
 
 var Exporter = React.createClass({
 	propTypes: {
-		format: React.PropTypes.string,
-		resourceAction: React.PropTypes.func.isRequired,
-		resourceOptions: React.PropTypes.object.isRequired,
-		params: React.PropTypes.object,
-		text: React.PropTypes.string,
-		mods: React.PropTypes.array
+		format          : React.PropTypes.string,
+		resourceAction  : React.PropTypes.func.isRequired,
+		resourceOptions : React.PropTypes.object.isRequired,
+		params          : React.PropTypes.object,
+		text            : React.PropTypes.string,
+		mods            : React.PropTypes.array,
+		overrideMethod  : React.PropTypes.func,
+		disabled        : React.PropTypes.bool
 	},
 
 	defaultParams: function () {
 		return {
-			format: this.props.format || 'csv',
-			paginate: false
+			format   : this.props.format || 'csv',
+			paginate : false
 		}
 	},
 
@@ -26,6 +28,8 @@ var Exporter = React.createClass({
 		switch (action) {
 			case 'click':
 				this.sendAction();
+				break;
+			default:
 				break;
 		}
 	},

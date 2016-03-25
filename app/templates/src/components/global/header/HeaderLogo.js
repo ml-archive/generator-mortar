@@ -2,13 +2,14 @@ var React = require('react/addons');
 
 var Header = React.createClass({
 	propTypes: {
-		homepage: React.PropTypes.string.isRequired,
-		title: React.PropTypes.string.isRequired
+		homepage : React.PropTypes.string.isRequired,
+		title    : React.PropTypes.string.isRequired,
+		logo    : React.PropTypes.array
 	},
 	buildLogo: function () {
 		return this.props.logo.map(function (logo, index) {
 			return <img src={logo} />;
-		}.bind(this));
+		});
 	},
 	render: function () {
 
@@ -24,7 +25,7 @@ var Header = React.createClass({
 				</button>
 				<a className="navbar-brand" href={this.props.homepage}>{brand}</a>
 			</div>
-		)
+		);
 	}
 });
 

@@ -5,6 +5,10 @@ var HeaderButton = require('./HeaderButton');
 } %>
 
 var HeaderButtons = React.createClass({
+	propTypes: {
+		buttons : React.PropTypes.array
+	},
+
 	buildButtons: function () {
 		return this.props.buttons.map(function(button, index) {
 			<% if (installType == "auth") {
@@ -19,7 +23,7 @@ var HeaderButtons = React.createClass({
 			}<% } else {
 				%>return <HeaderButton key={index} {...button} />;<%
 			} %>
-		})
+		});
 	},
 
 	render: function () {
@@ -27,7 +31,7 @@ var HeaderButtons = React.createClass({
 			<ul className="nav navbar-nav navbar-right">
 				{this.buildButtons()}
 			</ul>
-		)
+		);
 	}
 });
 

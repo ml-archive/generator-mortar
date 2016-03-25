@@ -1,5 +1,6 @@
 var config = require('./config/config');
 var MortarJS = require('./bootstrap').MortarJS;
+var _ = require('lodash');
 //var AppContainer = {};
 
 // Should go separately into MortarJS.App or something other than the MortarJS index bootstrap because that's not actually exported

@@ -7,29 +7,29 @@ module.exports = {
 	base: require('./base-config'),
 
 	header: {
-		title: 'Admin UI',
-		homepage: 'http://www.fuzzproductions.com',
-		buttons: []
+		title    : 'Admin UI',
+		homepage : 'http://www.fuzzproductions.com',
+		buttons  : []
 	},
 
 	login: {
-		authType: 'username',
-		validator: /.*/
+		authType  : 'username',
+		validator : /.*/
 	},
 
 	navbar: [
 		{
-			"buttonName": "Dashboard",
-			"href": "/#/"
+			"buttonName" : "Dashboard",
+			"href"       : "/#/"
 		},
 
 		{
-			"buttonName": "Additional Page",
-			"href": "",
-			"children": [
+			"buttonName" : "Additional Page",
+			"href"       : "",
+			"children"   : [
 				{
-					"buttonName": "Page",
-					"href":       "#/page/"
+					"buttonName" : "Page",
+					"href"       : "#/page/"
 				}
 			]
 		}

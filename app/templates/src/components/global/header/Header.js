@@ -24,7 +24,7 @@ var Header = React.createClass({
 					<NavBar />
 				</div>
 			</nav>
-		)
+		);
 	}
 });
 

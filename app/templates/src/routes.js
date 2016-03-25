@@ -40,8 +40,7 @@ var Routes = (
 		%><Route name="login"          handler ={Login} />
 		<Route name="logout"         handler ={Logout} />
 		<Route name="password-reset" handler ={Login} /><%
-		} %>
-		<Route name="index"          handler ={Dashboard} />
+		} %><Route name="index"          handler ={Dashboard} />
 
 		<NotFoundRoute handler={Dashboard} />
 	</Route>

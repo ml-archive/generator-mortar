@@ -43,7 +43,7 @@ var CmsUserStore = Object.assign({}, ModelStore, {
 		// Buffer time in seconds
 		var expiryBuffer = 100;
 
-		return Date.now() > (tokenStore.expiresAt - expiryBuffer);
+		return Date.now() > tokenStore.expiresAt - expiryBuffer;
 	},
 
 	me: function () {
@@ -81,10 +81,10 @@ var CmsUserStore = Object.assign({}, ModelStore, {
 
 	_saveTokenToLocalStorage: function (action) {
 		var tokenStore = {
-			accessToken:  action.accessToken,
-			expiresIn:    action.expiresIn,
-			expiresAt:    Date.now() + (action.expiresIn * 1000), // Convert to milliseconds
-			refreshToken: action.refreshToken
+			accessToken  : action.accessToken,
+			expiresIn    : action.expiresIn,
+			expiresAt    : Date.now() + action.expiresIn * 1000, // Convert to milliseconds
+			refreshToken : action.refreshToken
 		};
 		localStorage.removeItem('tokenStore');
 		localStorage.removeItem('scopesStore');

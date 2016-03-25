@@ -6,6 +6,10 @@ var RequirePermissions = require('../../authentication/RequirePermissions');<%
 } %>
 
 var HeaderButtonDropdown = React.createClass({
+	propTypes: {
+		items : React.PropTypes.string.isRequired
+	},
+
 	buildItems: function () {
 		return this.props.items.map(function (item, index) {
 			<% if (installType == "auth") {
@@ -26,10 +30,9 @@ var HeaderButtonDropdown = React.createClass({
 	render: function () {
 		return (
 			<ul className="dropdown-menu dropdown-user">
-				{this.buildItems()}
-				<% if (installType == "auth") {%><SignOutLink /><%} %>
+				{this.buildItems()} <% if (installType == "auth") {%><SignOutLink /><%} %>
 			</ul>
-		)
+		);
 	}
 });
 

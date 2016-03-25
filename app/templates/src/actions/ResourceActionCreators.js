@@ -71,10 +71,10 @@ ResourceActions.prototype.receiveResource = function (data, paginationData) {
 		eventData = this.eventData || null;
 	// If this.resource isn't available here to dispatch an event, save it in a separate store?
 	AppDispatcher.dispatch({
-		type: eventName,
-		eventData: eventData,
-		data: data,
-		paginationData: paginationData
+		type           : eventName,
+		eventData      : eventData,
+		data           : data,
+		paginationData : paginationData
 	});
 };
 
@@ -166,5 +166,5 @@ ResourceActions.prototype.refreshResourceList = function (data) {
 	this.listResource(this.options);
 };
 
-module.exports = ResourceActions;;
+module.exports = ResourceActions;
 

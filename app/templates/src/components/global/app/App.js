@@ -18,8 +18,7 @@ var RequireAuth = require('../../authentication/RequireAuthentication');<%
  *
  * @type {*|exports}
  */
-var App = <% if (installType == "auth") { %>RequireAuth(<% } %>
-	React.createClass({
+var App = <% if (installType == "auth") { %>RequireAuth(<% } %>React.createClass({
 		/**
 		 * Used to state based on user authentication status
 		 *

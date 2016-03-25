@@ -3,8 +3,8 @@ var React = require('react/addons');
 var HeaderButtonDropdownItem = React.createClass({
 	propTypes: {
 		iconName: React.PropTypes.string.isRequired,
-		item: React.PropTypes.string.isRequired,
-		href: React.PropTypes.string.isRequired
+		item : React.PropTypes.string.isRequired,
+		href : React.PropTypes.string.isRequired
 	},
 
 	render: function () {
@@ -15,7 +15,7 @@ var HeaderButtonDropdownItem = React.createClass({
 					{this.props.item}
 				</a>
 			</li>
-		)
+		);
 	}
 });
 

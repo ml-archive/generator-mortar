@@ -26,7 +26,7 @@ var AuthenticationApi = {
 	refreshToken: function (refreshToken, cb, failedAuthHandler) {
 		var data = Object.assign(this.client, {
 			"grant_type"    : "refresh_token",
-			"refresh_token" : refreshToken,
+			"refresh_token" : refreshToken
 		});
 
 		api.post(config.baseUrl + 'oauth/access_token', data, {errorHandler: failedAuthHandler}, cb);
@@ -48,7 +48,7 @@ var AuthenticationApi = {
 		var options = {
 			modifiers: {
 				user: {
-					app   : 'cms'
+					app : 'cms'
 				}
 			},
 			noAuth:    true

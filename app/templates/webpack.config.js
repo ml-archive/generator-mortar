@@ -12,9 +12,9 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const PATHS = {
-	app: path.join(__dirname, 'src'),
-  main: path.join(__dirname, 'src/main.js'),
-  output: path.join(__dirname, 'build')
+	app    : path.join(__dirname, 'src'),
+	main   : path.join(__dirname, 'src/main.js'),
+	output : path.join(__dirname, 'build')
 };
 
 module.exports = {
@@ -122,6 +122,5 @@ module.exports = {
 			root: __dirname,
 			verbose: true
 		})
-  ]
-
+	]
 };

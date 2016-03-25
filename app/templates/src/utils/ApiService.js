@@ -18,7 +18,7 @@ var ApiService = {
 		// @todo The token should be retrieved via another method, but this is okay for now
 		return {
 			Authorization: 'Bearer ' + CmsUserStore.getToken()
-		}
+		};
 	},
 
 	/**
@@ -187,7 +187,7 @@ var ApiService = {
 	 */
 	buildFilters: function (filters, key) {
 		// Flatten the filters object to retrieve an object of {column_name: 'path.in.original.object'
-		var flattened = this.flatten(filters, '', {});;
+		var flattened = this.flatten(filters, '', {});
 
 		var filterStrings = [];
 		for (var column in flattened) {
@@ -260,12 +260,12 @@ var ApiService = {
 		}
 
 		S({
-			url:     this.buildUrlString(url, options),
-			method:  'get',
-			contentType: this.setContentType(options),
-			processData: this.shouldProcessData(options),
-			headers: options.noAuth ? options.headers : this.mergeHeaders(options.headers),
-			success: function (response) {
+			url         :     this.buildUrlString(url, options),
+			method      :  'get',
+			contentType : this.setContentType(options),
+			processData : this.shouldProcessData(options),
+			headers     : options.noAuth ? options.headers : this.mergeHeaders(options.headers),
+			success     : function (response) {
 				console.log('Success response', response);
 				// Call pagination action creator to store pagination data
 				if (response.meta && response.meta.pagination) {
@@ -292,8 +292,8 @@ var ApiService = {
 	 */
 	post: function (url, data, options, cb) {
 		S({
-			url:         this.buildUrlString(url, options),
-			before:      function (XMLHttpRequest) {
+			url         : this.buildUrlString(url, options),
+			before      : function (XMLHttpRequest) {
 				// Set up event listeners before sending request
 				XMLHttpRequest.upload.addEventListener("progress", function (evt) {
 					if (evt.lengthComputable) {
@@ -301,22 +301,22 @@ var ApiService = {
 					}
 				}, false);
 			},
-			method:      'post',
-			data:        this.setData(data, options),
-			contentType: this.setContentType(options),
-			processData: this.shouldProcessData(options),
-			headers:     options.noAuth ? options.headers : this.mergeHeaders(options.headers),
-			success:     function (response) {
+			method      : 'post',
+			data        : this.setData(data, options),
+			contentType : this.setContentType(options),
+			processData : this.shouldProcessData(options),
+			headers     : options.noAuth ? options.headers : this.mergeHeaders(options.headers),
+			success     : function (response) {
 				console.log('Success response', response);
 
-				if (! options.hideAlert) {
+				if (!options.hideAlert) {
 					SuccessHandler.success(options.alertText || 'Resource created.');
 				}
 
 				// Call action creator callback that receives user data
 				cb(options.dataNode ? response[options.dataNode] : response);
 			},
-			error:       function (response) {
+			error       : function (response) {
 				this.handleError(response, options);
 			}.bind(this)
 		});
@@ -332,13 +332,13 @@ var ApiService = {
 	 */
 	delete: function (url, data, options, cb) {
 		S({
-			url:         this.buildUrlString(url, options),
-			method:      'delete',
-			type:        'json',
-			data:        JSON.stringify(data),
-			contentType: 'application/json',
-			headers:     options.noAuth ? options.headers : this.mergeHeaders(options.headers),
-			success:     function (response) {
+			url         :         this.buildUrlString(url, options),
+			method      :      'delete',
+			type        :        'json',
+			data        :        JSON.stringify(data),
+			contentType : 'application/json',
+			headers     :     options.noAuth ? options.headers : this.mergeHeaders(options.headers),
+			success     :     function (response) {
 				console.log('Success response', response);
 
 				if (! options.hideAlert) {
@@ -348,7 +348,7 @@ var ApiService = {
 				// Call action creator callback that receives user data
 				cb(options.dataNode ? response[options.dataNode] : response);
 			},
-			error:       function (response) {
+			error       : function (response) {
 				this.handleError(response, options);
 			}.bind(this)
 		})
@@ -364,9 +364,9 @@ var ApiService = {
 	 */
 	put: function (url, data, options, cb) {
 		S({
-			url:         this.buildUrlString(url, options),
-			method:      'put',
-			before:      function (XMLHttpRequest) {
+			url         : this.buildUrlString(url, options),
+			method      : 'put',
+			before      : function (XMLHttpRequest) {
 				// Set up event listeners before sending request
 				XMLHttpRequest.upload.addEventListener("progress", function (evt) {
 					if (evt.lengthComputable) {
@@ -374,11 +374,11 @@ var ApiService = {
 					}
 				}, false);
 			},
-			data:        this.setData(data, options),
-			contentType: this.setContentType(options),
-			processData: this.shouldProcessData(options),
-			headers:     options.noAuth ? options.headers : this.mergeHeaders(options.headers),
-			success:     function (response) {
+			data        : this.setData(data, options),
+			contentType : this.setContentType(options),
+			processData : this.shouldProcessData(options),
+			headers     : options.noAuth ? options.headers : this.mergeHeaders(options.headers),
+			success     : function (response) {
 				console.log('Success response', response);
 
 				if (! options.hideAlert) {
@@ -388,7 +388,7 @@ var ApiService = {
 				// Call action creator callback that receives user data
 				cb(options.dataNode ? response[options.dataNode] : response);
 			},
-			error:       function (response) {
+			error       : function (response) {
 				this.handleError(response, options);
 			}.bind(this)
 		});
