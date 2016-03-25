@@ -33,11 +33,12 @@ describe('generator-mortar with a basic scaffolding', function () {
     ]);
   });
 
-  it('creates npm, webpack, and git files', function () {
+  it('creates npm, webpack, linting, and git files', function () {
     assert.file([
       'package.json',
       'webpack.config.js',
-      '.gitignore'
+      '.gitignore',
+      '.eslintrc'
     ]);
   });
 
