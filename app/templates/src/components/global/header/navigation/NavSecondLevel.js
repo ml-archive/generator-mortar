@@ -15,7 +15,7 @@ var NavSecondLevel = React.createClass({
 		return this.props.button.children.map(function(button, index) {
 			return (
 				<NavThirdLevel key={index} button={button} />
-			)
+			);
 		});
 	},
 
@@ -24,7 +24,7 @@ var NavSecondLevel = React.createClass({
 			<li>
 				<a href={this.props.button.href}>{this.props.button.buttonName}</a>
 			</li>
-		)
+		);
 	}
 });
 

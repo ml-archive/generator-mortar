@@ -137,7 +137,7 @@
 
     ////////// React.js //////////
     "react/no-deprecated": 1,   // disallow use of deprecated React features
-    "react/display-name": 1     // require React components to use a variable name
+    "react/display-name": 1,     // require React components to use a variable name
 
     ////////// Stylistic Issues //////////
 

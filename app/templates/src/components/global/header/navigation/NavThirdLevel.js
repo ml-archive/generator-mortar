@@ -3,7 +3,8 @@ var React = require('react/addons');
 var NavThirdLevel = React.createClass({
 	propTypes: {
 		button       : React.PropTypes.shape({
-			buttonName : React.PropTypes.string.isRequired
+			buttonName : React.PropTypes.string.isRequired,
+			href       : React.PropTypes.string.isRequired
 		})
 	},
 

@@ -32,7 +32,7 @@ module.exports = function (navbarConfig) {
 				<ul className="nav navbar-nav">
 				{this.buttons()}
 				</ul>
-			)
+			);
 		}
 	});
 };

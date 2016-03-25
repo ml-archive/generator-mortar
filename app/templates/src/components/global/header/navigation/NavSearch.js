@@ -13,7 +13,7 @@ var NavSearch = React.createClass({
 					</span>
 				</div>
 			</li>
-		)
+		);
 	}
 });
 

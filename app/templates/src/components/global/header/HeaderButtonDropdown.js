@@ -30,7 +30,7 @@ var HeaderButtonDropdown = React.createClass({
 	render: function () {
 		return (
 			<ul className="dropdown-menu dropdown-user">
-				{this.buildItems()} <% if (installType == "auth") {%><SignOutLink /><%} %>
+				{this.buildItems()}<% if (installType == "auth") {%><SignOutLink /><%} %>
 			</ul>
 		);
 	}
