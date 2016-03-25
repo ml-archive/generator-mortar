@@ -45,7 +45,7 @@ module.exports = {
 		preLoaders: [{
 			test:    /\.js$/,
 			exclude: /node_modules/,
-			loader:  'jsxhint'
+			loader:  'eslint-loader'
 		}],
 		loaders:    [
 			// compile all javascript files using the babel-loader module
