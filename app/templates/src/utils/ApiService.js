@@ -227,7 +227,7 @@ var ApiService = {
 					parts.push(key + '[' + column + ']=' + part[column]);
 				}
 			} else if (key === 'include') {
-				modifiers[key].forEach(function (relation, index) {
+				modifiers[key].forEach((relation, index) => {
 					parts.push('include[]=' + relation);
 				});
 			} else {

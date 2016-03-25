@@ -7,9 +7,10 @@ var NavThirdLevel = require('./NavThirdLevel');
 
 var NavButton = React.createClass({
 	propTypes: {
-		button: React.PropTypes.shape({
-			href: React.PropTypes.string.isRequired,
-			buttonName: React.PropTypes.string.isRequired
+		button       : React.PropTypes.shape({
+			href       : React.PropTypes.string.isRequired,
+			buttonName : React.PropTypes.string.isRequired,
+			children   : React.PropTypes.array
 		})
 	},
 
@@ -25,11 +26,11 @@ var NavButton = React.createClass({
 			} else {
 				return (
 					<NavSecondLevel key={index} button={button} />
-				)
+				);
 			}<% } else {
 				%>return (
 					<NavSecondLevel key={index} button={button} />
-				)<%
+				);<%
 			}%>
 		});
 	},
@@ -46,7 +47,7 @@ var NavButton = React.createClass({
 						{this.children()}
 					</ul>
 				</li>
-			)
+			) ;
 		} else {
 			return (
 				<li>
@@ -55,7 +56,7 @@ var NavButton = React.createClass({
 						<div className="ripple-wrapper"></div>
 					</a>
 				</li>
-			)
+			);
 		}
 	}
 });

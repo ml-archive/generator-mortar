@@ -72,7 +72,7 @@
     "no-iterator": 2,                      // disallow usage of __iterator__ property
     "no-labels": 2,                        // disallow use of labeled statements
     "no-lone-blocks": 1,                   // disallow unnecessary nested blocks
-    "no-loop-func": 2,                     // disallow creation of functions within loops
+    "no-loop-func": 1,                     // disallow creation of functions within loops
     "no-multi-spaces": 0,                  // disallow use of multiple spaces
     "no-multi-str": 0,                     // disallow use of multiline strings
     "no-native-reassign": 2,               // disallow reassignments of native objects
@@ -137,6 +137,7 @@
 
     ////////// React.js //////////
     "react/no-deprecated": 1,   // disallow use of deprecated React features
+    "react/display-name": 1     // require React components to use a variable name
 
     ////////// Stylistic Issues //////////
 

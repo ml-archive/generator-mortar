@@ -1,10 +1,9 @@
 module.exports = function (navbarConfig) {
 	var React = require('react/addons');
 	var NavButton = require('./NavButton');
-	var NavSearch = require('./NavSearch');
-	<% if (installType == "auth") {
+	var NavSearch = require('./NavSearch');<% if (installType == "auth") {
 	%>var RequirePermissions = require('../../../authentication/RequirePermissions');<%
-	} %>
+	}%>
 
 	return React.createClass({
 		buttons: function () {

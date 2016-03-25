@@ -8,7 +8,7 @@ var NavBar = React.createClass({
 			<div className="nav navbar-nav">
 				<NavButtons />
 			</div>
-		)
+		);
 	}
 });
 

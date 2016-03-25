@@ -4,9 +4,10 @@ var NavThirdLevel = require('./NavThirdLevel');
 // @todo keep it DRY. This and third level can be combined. Indirect CSS.
 var NavSecondLevel = React.createClass({
 	propTypes: {
-		button: React.PropTypes.shape({
-			href: React.PropTypes.string.isRequired,
-			buttonName: React.PropTypes.string.isRequired
+		button       : React.PropTypes.shape({
+			href       : React.PropTypes.string.isRequired,
+			buttonName : React.PropTypes.string.isRequired,
+			children   : React.PropTypes.array
 		})
 	},
 
