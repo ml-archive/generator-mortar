@@ -26,15 +26,19 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
-# App specific
+# Node specific
 node_modules/
-npm-debug.log
+npm-debug.log*
+*.npm
+*.log
+
+# Webpack compiled & packed javascript
+build.js
+build/.*
+
+# App specific
 .tmp
 dist
 src/config/base-config.js
 tags
 *-old/
-
-# Webpack compiled & packed javascript
-build.js
-build/.*
