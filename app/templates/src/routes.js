@@ -1,49 +1,15 @@
-var React         = require('react/addons');
-var Router        = require('react-router');
+import React from 'react';
+import {Route, IndexRoute} from 'react-router';
 
-var Link          = Router.Link;
-var Route         = Router.Route;
-var NotFoundRoute = Router.NotFoundRoute;
-var DefaultRoute  = Router.DefaultRoute;
+import App from './components/app';
 
-/**
- * Components
- *
- * @type {exports}
- */
-var MortarJS = require('./bootstrap').MortarJS;
-var App      = MortarJS.Components.Global.App;
-<% if (installType == "auth") {
-%>var Login    = MortarJS.Components.Authentication.Login.Login;
-var Logout   = MortarJS.Components.Authentication.Login.Logout;<%
-} %>
-
-/**
- * CMS Pages
- *
- * @type {exports}
- */
-var Dashboard = require('./pages/dashboard/Dashboard');
-
-/**
- * Routing
- *
- * This configuration doesn't necessarily map to routes, but to how the layout is presented by the router
- *
- * @type {JSX}
- * @TODO: top-level pages with no content should default to the first view
- * @TODO: build all these pages
- */
-var Routes = (
-	<Route path="/" handler={App}>
-		<% if (installType === "auth") {
-		%><Route name="login"          handler ={Login} />
-		<Route name="logout"         handler ={Logout} />
-		<Route name="password-reset" handler ={Login} /><%
-		} %><Route name="index"          handler ={Dashboard} />
-
-		<NotFoundRoute handler={Dashboard} />
+const Routes = (
+	<Route path="/" component={App}>
 	</Route>
 );
+
+// <IndexRoute component={Dashboard} />
+// <Route path="*" component={Dashboard} />
+
 
 module.exports = Routes;

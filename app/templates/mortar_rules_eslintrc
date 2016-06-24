@@ -24,7 +24,6 @@
   "rules": {
     "comma-dangle": [2, "never"],                // disallow trailing commas in object literals
     "no-cond-assign": 1,                         // disallow assignment in conditional expressions
-    "no-console": [1, {allow: ['error', warn]}], // disallow use of console (off by default in the node environment)
     "no-constant-condition": 0,                  // disallow use of constant expressions in conditions
     "no-control-regex": 0,                       // disallow control characters in regular expressions
     "no-debugger": 1,                            // disallow use of debugger
@@ -34,7 +33,7 @@
     "no-empty": 1,                               // disallow empty statements
     "no-ex-assign": 2,                           // disallow assigning to the exception in a catch block
     "no-extra-boolean-cast": 0,                  // disallow double-negation boolean casts in a boolean context
-    "no-extra-parens": 2,                        // disallow unnecessary parentheses (off by default)
+    "no-extra-parens": 1,                        // disallow unnecessary parentheses (off by default)
     "no-extra-semi": 2,                          // disallow unnecessary semicolons
     "no-func-assign": 1,                         // disallow overwriting functions written as function declarations
     "no-inner-declarations": 1,                  // disallow function or variable declarations in nested blocks
@@ -54,7 +53,7 @@
     "consistent-return": 1,                      // require return statements to either always or never specify values
     "curly": 1,                                  // specify curly brace conventions for all control statements
     "default-case": 2,                           // require default case in switch statements (off by default)
-    "dot-location": ["error", "property"],       // when seperating dot member expressions with newlines, dot should be on the newline
+    "dot-location": 2,                           // when seperating dot member expressions with newlines, dot should be on the newline
     "dot-notation": 1,                           // encourages use of dot notation whenever possible
     "eqeqeq": 1,                                 // require the use of === and !==
     "guard-for-in": 1,                           // make sure for-in loops have an if statement (off by default)
