@@ -20,7 +20,7 @@ module.exports = yeoman.generators.Base.extend({
 				type    : 'input',
 				name    : 'projectName',
 				message : 'Name of this project:',
-				default : 'Generic Mortar Project'
+				default : 'My Mortar Project'
 			},
 
 			// Application description
@@ -28,7 +28,7 @@ module.exports = yeoman.generators.Base.extend({
 				type    : 'input',
 				name    : 'projectDescription',
 				message : 'Short description:',
-				default : 'Generic CMS'
+				default : 'My CMS'
 			},
 
 			// Application author
@@ -54,15 +54,15 @@ module.exports = yeoman.generators.Base.extend({
 				},
 				choices: [
 					{
-						name: "Mortar recommended style guide",
+						name: "Mortar .eslintrc",
 						value: "mortar-linting"
 					},
 					{
-						name: "Airbnb recommended style guide",
+						name: "Airbnb .eslintrc",
 						value: "airbnb-linting"
 					},
 					{
-						name: "Google recommended style guide",
+						name: "Google .eslintrc",
 						value: "google-linting"
 					}
 				]
@@ -205,6 +205,9 @@ module.exports = yeoman.generators.Base.extend({
 	},
 	// Install app dependencies
 	install: function () {
-		this.installDependencies();
+		this.installDependencies({
+			bower: false,
+			npm: true
+		});
 	}
 });
