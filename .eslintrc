@@ -1,11 +1,12 @@
 {
-  "extends": "eslint:recommended",
   "env": {
-    "mocha": true
+    "mocha": true,
+    "es6": true, 
   },
   "ecmaFeatures": {
       "jsx": true,
-      "arrowFunctions": true
+      "arrowFunctions": true,
+      "modules": true
   },
   "plugins": [
       "react"

@@ -4,16 +4,14 @@
  * Packages
  * @type {exports}
  */
-var React        = require('react/addons');
-var config       = require('./config/config');
-var Router       = require('react-router');
-var CmsUserStore = require('./stores/CmsUserStore');
-var MortarJS     = require('./bootstrap').MortarJS;
-var AppContainer = require('./app-container').MortarJS;
+var React = require('react');
+var reactDOM = require('react-dom');
+// var config = require('./config/config');
 
-<% if (installType == "auth") {
-%>var AuthenticationServerActionCreators = AppContainer.Actions.AuthenticationServerActionCreators;<%
-} %>
+import {Router, useRouterHistory} from 'react-router';
+import {createHashHistory} from 'history';
+
+const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
 
 /**
  * Pull in application routes
@@ -22,28 +20,18 @@ var AppContainer = require('./app-container').MortarJS;
  */
 var Routes = require('./routes');
 
-<% if (installType == "auth") {
-%>// Validate access token
-if (CmsUserStore.isTokenExpired()) {
-	// Refresh the token, since it's expiring or about to expire
-	var refreshToken = CmsUserStore.getRefreshToken();
-	AuthenticationServerActionCreators.refreshToken(refreshToken);
-} else {
-	var token = CmsUserStore.getToken();
-	if (token) {
-		AuthenticationServerActionCreators.loginWithToken(token);
-	}
-}<%
-} %>
-
 // Attach react router
 window.__app_container = document.getElementById('root');
-Router.run(Routes, function (Handler) {
-	React.render(<Handler/>, window.__app_container);
-});
+
+reactDOM.render((
+	<div>
+		<Router history={appHistory} routes={Routes} />
+		<footer>Made with <a href="http://mortarjs.io">Mortar</a></footer>
+	</div>
+), window.__app_container)
 
 /**
- * IMPORTANT! Pull index.html into the build folder.
+ * Pull in index.html!
  *
  * @type {exports}
  */
