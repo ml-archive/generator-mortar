@@ -26,7 +26,6 @@ window.__app_container = document.getElementById('root');
 reactDOM.render((
 	<div>
 		<Router history={appHistory} routes={Routes} />
-		<footer>Made with <a href="http://mortarjs.io">Mortar</a></footer>
 	</div>
 ), window.__app_container)
 
