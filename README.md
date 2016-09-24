@@ -1,4 +1,4 @@
-# Yeoman Generator for Mortar.js Projects
+# Yeoman Generator for Mortar.js Projects [![Slack Status](https://fuzz-opensource.herokuapp.com/badge.svg)](https://fuzz-opensource.herokuapp.com/)
 
 <p align="center">
   <img src="https://cdn.rawgit.com/fuzz-productions/generator-mortar/master/logo.svg" />
